@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>【日语_01】初级文法总结 | Ruby の いえ</title><meta name="description" content="【日语_01】初级文法总结"><meta name="keywords" content="日语文法"><meta name="author" content="Lovely Ruby,1007420679@qq.com"><meta name="copyright" content="Lovely Ruby"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【日语_01】初级文法总结"><meta name="twitter:description" content="【日语_01】初级文法总结"><meta name="twitter:image" content="https://i.loli.net/2020/02/20/1KvftpdahLWTbB4.jpg"><meta property="og:type" content="article"><meta property="og:title" content="【日语_01】初级文法总结"><meta property="og:url" content="https://wangzhongqing.xyz/p/63282"><meta property="og:site_name" content="Ruby の いえ"><meta property="og:description" content="【日语_01】初级文法总结"><meta property="og:image" content="https://i.loli.net/2020/02/20/1KvftpdahLWTbB4.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="https://wangzhongqing.xyz/p/63282"><link rel="prev" title="【经济学_01】通货膨胀 &amp; 投资陷阱" href="https://wangzhongqing.xyz/p/30333.html"><link rel="next" title="【搞机】苹果6Plus绕过ID" href="https://wangzhongqing.xyz/p/e9056929.html"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#93AACF","bgDark":"#2d3035","position":"top-center"},
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Ruby の いえ" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Ruby の いえ</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/lab/"><i class="fa-fw fa fa-flask"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 关于</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 我</span></a></li><li><a class="site-page" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">54</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/lab/"><i class="fa-fw fa fa-flask"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 关于</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 我</span></a></li><li><a class="site-page" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第一单元-小李赴日"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">第一单元　小李赴日</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#01李さんは-中国人です"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">01李さんは　中国人です</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#02これは-本です"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">02これは　本です</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#03ここは-デパートです"><span class="toc_mobile_items-number">1.3.</span> <span class="toc_mobile_items-text">03ここは　デパートです</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#04部屋に-机と-椅子が-ありません"><span class="toc_mobile_items-number">1.4.</span> <span class="toc_mobile_items-text">04部屋に　机と　椅子が　ありません</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#05森さんは-7時に起きます"><span class="toc_mobile_items-number">1.5.</span> <span class="toc_mobile_items-text">05森さんは　7時に起きます</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#动词的时态"><span class="toc_mobile_items-number">1.5.1.</span> <span class="toc_mobile_items-text">动词的时态</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#06吉田さんは来月中国へ行きます"><span class="toc_mobile_items-number">1.6.</span> <span class="toc_mobile_items-text">06吉田さんは来月中国へ行きます</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一单元-小李赴日"><span class="toc-number">1.</span> <span class="toc-text">第一单元　小李赴日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01李さんは-中国人です"><span class="toc-number">1.1.</span> <span class="toc-text">01李さんは　中国人です</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02これは-本です"><span class="toc-number">1.2.</span> <span class="toc-text">02これは　本です</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03ここは-デパートです"><span class="toc-number">1.3.</span> <span class="toc-text">03ここは　デパートです</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04部屋に-机と-椅子が-ありません"><span class="toc-number">1.4.</span> <span class="toc-text">04部屋に　机と　椅子が　ありません</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05森さんは-7時に起きます"><span class="toc-number">1.5.</span> <span class="toc-text">05森さんは　7時に起きます</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动词的时态"><span class="toc-number">1.5.1.</span> <span class="toc-text">动词的时态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06吉田さんは来月中国へ行きます"><span class="toc-number">1.6.</span> <span class="toc-text">06吉田さんは来月中国へ行きます</span></a></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2020/02/20/1KvftpdahLWTbB4.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">【日语_01】初级文法总结</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-09-20<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-03-19</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a></span><div class="post-meta-wordcount"><div class="post-meta-pv-cv"><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="fa fa-comments-o post-meta__icon fa-fw" aria-hidden="true"></i><span>评论数:</span><a href="/p/63282.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/p/63282.html" itemprop="commentCount"></span></a></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><html><head></head><body><p>微软ime常用快捷键</p>
+<p>cap+shift 切换 英文日文</p>
+<p>cap + ctrl 切换 平假名</p>
+<p>cap+ alt 切换片假名</p>
+<h1 id="第一单元-小李赴日"><a href="#第一单元-小李赴日" class="headerlink" title="第一单元　小李赴日"></a>第一单元　小李赴日</h1><h2 id="01李さんは-中国人です"><a href="#01李さんは-中国人です" class="headerlink" title="01李さんは　中国人です"></a>01李さんは　中国人です</h2><table>
+<thead>
+<tr>
+<th align="left">日语语法</th>
+<th align="left">汉语翻译</th>
+<th align="left">例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">名詞 + は 名詞 <strong>です</strong></td>
+<td align="left">xx 是 xx</td>
+<td align="left">李さんが中国人です</td>
+</tr>
+<tr>
+<td align="left">名詞 + は 名詞 <strong>ではありません</strong></td>
+<td align="left">xx 不是 xx</td>
+<td align="left">森さんは学生ではありません</td>
+</tr>
+<tr>
+<td align="left">名詞　は 名詞 です<strong>か</strong></td>
+<td align="left">疑问句</td>
+<td align="left">あなたは小野さんですか</td>
+</tr>
+<tr>
+<td align="left"><strong>はい、そうです</strong></td>
+<td align="left">肯定的回答</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><strong>いいえ、ちがいます</strong></td>
+<td align="left">否定的回答</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">名詞　の　名詞　【从属机构、国家】【属性】</td>
+<td align="left">前面的名词是后面名词从属的机构、国家或属性</td>
+<td align="left">李さんはJC企画の社員です</td>
+</tr>
+</tbody></table>
+<h2 id="02これは-本です"><a href="#02これは-本です" class="headerlink" title="02これは　本です"></a>02これは　本です</h2><table>
+<thead>
+<tr>
+<th align="left">日语语法</th>
+<th align="left">汉语翻译</th>
+<th align="left">例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>これ</strong>は　名詞です【距离说话人较近】</td>
+<td align="left">这里</td>
+<td align="left">これは本です</td>
+</tr>
+<tr>
+<td align="left"><strong>それ</strong>は　名詞です【距离听话人较劲】</td>
+<td align="left">那里</td>
+<td align="left">それはかばんです</td>
+</tr>
+<tr>
+<td align="left"><strong>あれ</strong>は　名詞です【距离说/听话人都远】</td>
+<td align="left">那~那里</td>
+<td align="left">あれはテレビです</td>
+</tr>
+<tr>
+<td align="left"><strong>誰ですか／何ですか</strong></td>
+<td align="left">谁啊/什么啊</td>
+<td align="left">それは　何ですか</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">あの人は誰ですか</td>
+</tr>
+<tr>
+<td align="left">名詞　の　名詞　【所属】</td>
+<td align="left">所属</td>
+<td align="left">わたしのかぎ(钥匙🔑)</td>
+</tr>
+<tr>
+<td align="left"><strong>どれ</strong>／<strong>どの</strong></td>
+<td align="left">谁的</td>
+<td align="left">森さんのかばんはどれですか</td>
+</tr>
+</tbody></table>
+<h2 id="03ここは-デパートです"><a href="#03ここは-デパートです" class="headerlink" title="03ここは　デパートです"></a>03ここは　デパートです</h2><table>
+<thead>
+<tr>
+<th align="left">日语语法</th>
+<th align="left">汉语翻译</th>
+<th align="left">例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>ここ</strong>　は　名詞　です</td>
+<td align="left">这里</td>
+<td align="left">ここはデパートです(这里是百货商店)</td>
+</tr>
+<tr>
+<td align="left"><strong>そこ</strong>　は　名詞　です</td>
+<td align="left">那里</td>
+<td align="left">そこは図書館です</td>
+</tr>
+<tr>
+<td align="left"><strong>あそこ</strong>　は　名詞　です</td>
+<td align="left">那儿</td>
+<td align="left">あそこは　入口です</td>
+</tr>
+<tr>
+<td align="left">名詞　は　<strong>とこですか</strong></td>
+<td align="left">哪儿？</td>
+<td align="left">トイレはどごですか</td>
+</tr>
+<tr>
+<td align="left">名詞　<strong>も</strong>　名詞　です</td>
+<td align="left">也</td>
+<td align="left">張さんも中国人です</td>
+</tr>
+<tr>
+<td align="left">名詞　は　名詞　<strong>ですか</strong>，名詞<strong>ですか</strong></td>
+<td align="left">答案有多种，询问其中一种时</td>
+<td align="left">かばん売り場は一階ですか，二階ですか。</td>
+</tr>
+<tr>
+<td align="left">名詞　は　<strong>いくらですか</strong></td>
+<td align="left">询问价格时</td>
+<td align="left">これは　いくらですか。</td>
+</tr>
+</tbody></table>
+<h2 id="04部屋に-机と-椅子が-ありません"><a href="#04部屋に-机と-椅子が-ありません" class="headerlink" title="04部屋に　机と　椅子が　ありません"></a>04部屋に　机と　椅子が　ありません</h2><table>
+<thead>
+<tr>
+<th align="left">日语语法</th>
+<th align="left">汉语翻译</th>
+<th align="left">例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>あります</strong></td>
+<td align="left">没有生命的东西的存在</td>
+<td align="left">ここに本があります。</td>
+</tr>
+<tr>
+<td align="left">ありま<strong>せん</strong></td>
+<td align="left">没有生命的东西的不存在</td>
+<td align="left">ここに本がありません。</td>
+</tr>
+<tr>
+<td align="left"><strong>います</strong></td>
+<td align="left">有生命的东西的存在</td>
+<td align="left">部屋に猫がいます。</td>
+</tr>
+<tr>
+<td align="left">いま<strong>せん</strong></td>
+<td align="left">有生命的东西的不存在</td>
+<td align="left">部屋に猫がいません。（屋子里没有猫）</td>
+</tr>
+<tr>
+<td align="left">名詞「物/人」<strong>は</strong>　名詞「場所」<strong>に</strong>　あります／います</td>
+<td align="left">xx 在 xx</td>
+<td align="left">いすは部屋にあります。</td>
+</tr>
+<tr>
+<td align="left">名詞「場所」に　名詞「物／人」<strong>が</strong>　あります／います</td>
+<td align="left">xx 在 xx</td>
+<td align="left">ここに本があります</td>
+</tr>
+<tr>
+<td align="left">名詞　<strong>と</strong>　名詞 【并列】</td>
+<td align="left">xx 和 xx</td>
+<td align="left">時計と眼鏡</td>
+</tr>
+<tr>
+<td align="left"><strong>ね</strong></td>
+<td align="left">确认</td>
+<td align="left">あそこに犬がいますね。</td>
+</tr>
+<tr>
+<td align="left">疑問詞＋<strong>も</strong>＋<strong>動詞否定</strong></td>
+<td align="left">表示全面否定</td>
+<td align="left">教室に誰もいません</td>
+</tr>
+</tbody></table>
+<h2 id="05森さんは-7時に起きます"><a href="#05森さんは-7時に起きます" class="headerlink" title="05森さんは　7時に起きます"></a>05森さんは　7時に起きます</h2><table>
+<thead>
+<tr>
+<th align="left">日语语法</th>
+<th align="left">汉语翻译</th>
+<th>例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">今　～時　～分です</td>
+<td align="left">表示现在的时间</td>
+<td>今4時です</td>
+</tr>
+<tr>
+<td align="left">动ます／动ません</td>
+<td align="left">现在</td>
+<td>森さんは毎日働きます</td>
+</tr>
+<tr>
+<td align="left">动ました／动ませんでした</td>
+<td align="left">国去</td>
+<td>森さんは先週休みました</td>
+</tr>
+<tr>
+<td align="left">「時間」に　动</td>
+<td align="left">表示动作发生的时间</td>
+<td>森さんは7時に起きます</td>
+</tr>
+<tr>
+<td align="left">「時間」から　「時間」まで　動</td>
+<td align="left">某个动作发生的某个<strong>期间</strong></td>
+<td>私は9時から5時まで働きます</td>
+</tr>
+<tr>
+<td align="left">いつ　動　ますか</td>
+<td align="left">询问某个动作进行的时间</td>
+<td>試験はいつ始まりますか</td>
+</tr>
+<tr>
+<td align="left">は「対比」</td>
+<td align="left">表对比</td>
+<td>小野さんは今日は休みます</td>
+</tr>
+</tbody></table>
+<h3 id="动词的时态"><a href="#动词的时态" class="headerlink" title="动词的时态"></a>动词的时态</h3><ol>
+<li>肯定地叙述现在的习惯性动作、状态以及未来的动作、状态时，用 <code>~ます</code>，其否定形式是<code>ません</code></li>
+<li>肯定地叙述过去的动作时<code>ます</code>要变成<code>ました</code>，其否定形式是<code>ませんでした</code>。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>～ます</th>
+<th>～ません</th>
+<th>～ました</th>
+<th>～ませんでした</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>休みます</td>
+<td>休みません</td>
+<td>休みました</td>
+<td>休みませんでした</td>
+</tr>
+<tr>
+<td>起きます</td>
+<td>起こません</td>
+<td>起きました</td>
+<td>起きませんでした</td>
+</tr>
+<tr>
+<td>寝ます</td>
+<td>寝ません</td>
+<td>寝ました</td>
+<td>寝ませんでした</td>
+</tr>
+<tr>
+<td>あります</td>
+<td>ありません</td>
+<td>ありました</td>
+<td>ありませんでした</td>
+</tr>
+</tbody></table>
+<h2 id="06吉田さんは来月中国へ行きます"><a href="#06吉田さんは来月中国へ行きます" class="headerlink" title="06吉田さんは来月中国へ行きます"></a>06吉田さんは来月中国へ行きます</h2><table>
+<thead>
+<tr>
+<th>日语语法</th>
+<th>汉语翻译</th>
+<th>例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名詞[場所]へ　動詞</td>
+<td></td>
+<td>吉田さんは中国へ行きます</td>
+</tr>
+<tr>
+<td>名詞[場所]から　動詞</td>
+<td></td>
+<td>李さんは先月北京から来ました</td>
+</tr>
+<tr>
+<td>名詞[人]と　動詞</td>
+<td></td>
+<td>小野さんはと友達と帰りました</td>
+</tr>
+<tr>
+<td>名詞[交通工具]で　動詞</td>
+<td></td>
+<td>李さんは歩いてアパートへ帰りました</td>
+</tr>
+<tr>
+<td>名詞[場所]から名詞[場所]まで　動詞</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</body></html></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1007420679@qq.com">Lovely Ruby</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangzhongqing.xyz/p/63282.html">https://wangzhongqing.xyz/p/63282.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangzhongqing.xyz">Ruby の いえ</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E8%AF%AD%E6%96%87%E6%B3%95/">日语文法    </a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/02/20/1KvftpdahLWTbB4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://i.loli.net/2020/02/21/WeAgmiaxBVKrMlG.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://i.loli.net/2020/02/21/WRgPph6Vt5I93GL.jpg" alt="支付寶"><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/p/30333.html"><img class="prev_cover lazyload" data-src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">上一篇</div><div class="prev_info"><span>【经济学_01】通货膨胀 &amp; 投资陷阱</span></div></a></div><div class="next-post pull_right"><a href="/p/e9056929.html"><img class="next_cover lazyload" data-src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>【搞机】苹果6Plus绕过ID</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = false == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'YA3OUHq0zOUVCQ7gOb6Grskp-gzGzoHsz',
+  appKey:'Aw8hEfP0teTOD7rji7Ye4gAO',
+  placeholder:'想对我说点啥嘛？',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/02/20/1KvftpdahLWTbB4.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lovely Ruby</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a href="http://hl.beian.miit.gov.cn/" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>黑ICP备20000233号</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://script-1256884783.file.myqcloud.com/cursor/fireworks.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script id="ribbon" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/activate-power-mode/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false; 
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":130,"height":260,"hOffset":40,"vOffset":-10},"mobile":{"show":false},"log":false});</script></body></html>
