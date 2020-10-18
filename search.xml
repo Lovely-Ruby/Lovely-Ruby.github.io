@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【日记】周末闲聊001</title>
+      <link href="p/94540e94.html"/>
+      <url>p/94540e94.html</url>
+      
+        <content type="html"><![CDATA[<html><head></head><body><h1 id="周末随心记"><a href="#周末随心记" class="headerlink" title="周末随心记"></a>周末随心记</h1><h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><h3 id="标签函数"><a href="#标签函数" class="headerlink" title="标签函数"></a>标签函数</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>,</span><br><span class="line">    b = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">zipTag</span>(<span class="params">strings, ...rest</span>) </span>{</span><br><span class="line">    <span class="built_in">console</span>.log(strings);   <span class="comment">// 这是个数组    ["", " + ", " = ", "", raw: Array(4)]   </span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        strings[<span class="number">0</span>] +</span><br><span class="line">        rest</span><br><span class="line">        .map(<span class="function">(<span class="params">e, i</span>) =></span> {</span><br><span class="line">            <span class="keyword">return</span> <span class="string">`<span class="subst">${e}</span><span class="subst">${strings[i + <span class="number">1</span>]}</span>`</span>;</span><br><span class="line">        })</span><br><span class="line">        .join(<span class="string">""</span>)       <span class="comment">// map 返回数组，然后拼接</span></span><br><span class="line">    );</span><br><span class="line">}</span><br><span class="line"><span class="keyword">let</span> tag = zipTag<span class="string">`<span class="subst">${a}</span> + <span class="subst">${b}</span> = <span class="subst">${a + b}</span>`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(tag);</span><br></pre></td></tr></tbody></table></figure></div><h2 id="闲谈"><a href="#闲谈" class="headerlink" title="闲谈"></a>闲谈</h2><p>早上看了看书，然后做了场力扣比赛，有个贪心的问题还没解决….</p><p>下午想着看一个纪录片了，同学找我玩原神，于是啊打到晚上五点多，五点半出门吃了顿饭，晚上回来洗个了澡，我邮寄回来的烤肠到了，然后烤了四个整的屋子里都是味道，烤完肠这就七点多了跟家里人打打电话，</p><h3 id="晚上跟家里人视频"><a href="#晚上跟家里人视频" class="headerlink" title="晚上跟家里人视频"></a>晚上跟家里人视频</h3><p>我老爹这腰疼的病又犯了，说是中午疼的，可咋整呢，说是腰肌劳损，我说去医院看看，他们还是心疼钱，哎我啥时候能有钱呢。昨天又找家里要钱来着，这个月工资发的晚了，吃饭的钱都要没了，以后要攒钱，要攒钱！！！狠狠的攒钱</p><p>每周写点啥叭~当是我的周总结了。</p></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随心记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>换硬盘之后如何迁移 hexo 博客</title>
       <link href="p/f31fa1f4.html"/>
       <url>p/f31fa1f4.html</url>
