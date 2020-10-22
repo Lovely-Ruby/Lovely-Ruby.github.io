@@ -1,86 +1,193 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>Ruby の いえ - ようこそ！お客</title><meta name="description" content="努力做一名坚韧善良的人！"><meta name="author" content="Lovely Ruby,1007420679@qq.com"><meta name="copyright" content="Lovely Ruby"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ruby の いえ"><meta name="twitter:description" content="努力做一名坚韧善良的人！"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png"><meta property="og:type" content="website"><meta property="og:title" content="Ruby の いえ"><meta property="og:url" content="https://wangzhongqing.xyz/"><meta property="og:site_name" content="Ruby の いえ"><meta property="og:description" content="努力做一名坚韧善良的人！"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
-var t = Cookies.get("theme");
-if (autoChangeMode == '1'){
-const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-if (t === undefined){
-  if (isLightMode) activateLightMode()
-  else if (isDarkMode) activateDarkMode()
-  else if (isNotSpecified || hasNoSupport){
-    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-    now = new Date();
-    hour = now.getHours();
-    isNight = hour < 6 || hour >= 18
-    isNight ? activateDarkMode() : activateLightMode()
-}
-} else if (t == 'light') activateLightMode()
-else activateDarkMode()
-
-
-} else if (autoChangeMode == '2'){
-  now = new Date();
-  hour = now.getHours();
-  isNight = hour < 6 || hour >= 18
-  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode() 
-} else {
-  if ( t == 'dark' ) activateDarkMode()
-  else if ( t == 'light') activateLightMode()
-}
-
-function activateDarkMode(){
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
-  }
-}
-function activateLightMode(){
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
-  }
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="https://wangzhongqing.xyz/"><link rel="preload" href="https://i.loli.net/2020/02/20/lFx7LrdSh4uk3Ue.jpg" as="image"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ruby の いえ - ようこそ！お客</title><meta name="author" content="Lovely Ruby,1007420679@qq.com"><meta name="copyright" content="Lovely Ruby"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="努力做一名坚韧善良的人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ruby の いえ">
+<meta property="og:url" content="https://wangzhongqing.xyz/index.html">
+<meta property="og:site_name" content="Ruby の いえ">
+<meta property="og:description" content="努力做一名坚韧善良的人！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png">
+<meta property="article:author" content="Lovely Ruby">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png"><link rel="canonical" href="https://wangzhongqing.xyz/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var GLOBAL_CONFIG = { 
   root: '/',
+  hexoversion: '5.2.0',
   algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
     noSupport: '浏览器不支持'
   },
-  bookmark: {
-    title: 'Snackbar.bookmark.title',
-    message_prev: '按',
-    message_next: '键将本页加入书签'
+  relativeDate: {
+    homepage: false,
+    post: false
   },
-  runtime_unit: '天',
-  runtime: true,
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
   copyright: undefined,
   ClickShowText: undefined,
-  medium_zoom: false,
-  fancybox: true,
-  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#93AACF","bgDark":"#2d3035","position":"top-center"},
-  baiduPush: false,
-  isHome: true,
-  isPost: false
-  
-}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Ruby の いえ" type="application/atom+xml">
-</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Ruby の いえ</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/lab/"><i class="fa-fw fa fa-flask"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 关于</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 我</span></a></li><li><a class="site-page" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">55</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">7</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/lab/"><i class="fa-fw fa fa-flask"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 关于</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 我</span></a></li><li><a class="site-page" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></div></div><div id="body-wrap"><nav class="full_page" id="nav" style="background-image: url(https://i.loli.net/2020/02/20/lFx7LrdSh4uk3Ue.jpg)"><div id="site-info"><div id="site-title"><span class="blogtitle">Ruby の いえ</span></div><div id="site-sub-title"><span class="subtitle"></span></div><div id="site-social-icons"><a class="social-icon" href="https://github.com/Amethyst-Ruby" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div><div class="scroll-down"><i class="fa fa-angle-down scroll-down-effects"></i></div></nav><main id="content-outer"><div class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/p/33097.html" title="博客搭建的细节及踩雷总结"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客搭建的细节及踩雷总结"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/33097.html" title="博客搭建的细节及踩雷总结">博客搭建的细节及踩雷总结</a><span class="article-meta"><i class="fa fa-thumb-tack article-meta__icon sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator" style="margin-right: 0.3rem">|</span></span><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-06</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span><div class="content">搭建时的坑与远端服务器建立相互信任目的：每次推送文章到远端git仓库时都需要输入密码，如果建立信任的话，就不需要输入密码了
-操作
-Code1ssh-copy-id -i C:/Users/yourname/.ssh/id_rsa.pub git@server_ip
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
 
-这里需要修改 yourname  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/p/94540e94.html" title="【日记】周末闲聊001"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【日记】周末闲聊001"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/94540e94.html" title="【日记】周末闲聊001">【日记】周末闲聊001</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-10-18</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a></span><div class="content">周末随心记学习标签函数javascript123456789101112131415let a = 1,    b = 2;function zipTag(strings, ...rest) {    console.log(strings);   // 这是个数组    ["", " + ", " ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/4U8aZp7gyieQAmH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="换硬盘之后如何迁移 hexo 博客"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客">换硬盘之后如何迁移 hexo 博客</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><div class="content">换硬盘之后如何迁移博客
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-22 20:16:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Ruby の いえ" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">56</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/lab/"><i class="fa-fw fa fa-flask"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-gift"></i><span> 豆瓣</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 我</span></a></li><li><a class="site-page" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://i.loli.net/2020/02/20/lFx7LrdSh4uk3Ue.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Ruby の いえ</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/lab/"><i class="fa-fw fa fa-flask"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-gift"></i><span> 豆瓣</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 我</span></a></li><li><a class="site-page" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Ruby の いえ</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Amethyst-Ruby" target="_blank" title=""><i class="fab fa-git"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank" title=""><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://m.weibo.cn/profile/2847822941" target="_blank" title=""><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/Amethyst_Ruby_" target="_blank" title=""><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://www.pixiv.net/users/18912544" target="_blank" title=""><i class="fab fa-product-hunt"></i></a><a class="social-icon" href="https://blog.csdn.net/u010263423" target="_blank" title=""><i class="fab fa-codiepie"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/p/33097.html" title="博客搭建的细节及踩雷总结">     <img class="post_bg" src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客搭建的细节及踩雷总结"></a></div><div class="recent-post-info"><a class="article-title" href="/p/33097.html" title="博客搭建的细节及踩雷总结">博客搭建的细节及踩雷总结</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack article-meta__icon sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-02-06T01:25:00.000Z" title="发表于 2020-02-06 09:25:00">2020-02-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span></div><div class="content">搭建时的坑与远端服务器建立相互信任目的：每次推送文章到远端git仓库时都需要输入密码，如果建立信任的话，就不需要输入密码了
+操作
+1ssh-copy-id -i C:&#x2F;Users&#x2F;yourname&#x2F;.ssh&#x2F;id_rsa.pub git@server_ip
+
+这里需要修改 yourname 以及 server_ip，分别对应本地用户名字，和远端服务器的ip地址
+当然你也可以通过xshell等软件登录远端，通过linux命令来操作，如果对linux操作比较熟悉的话建议这样。
+常用命令更新github账户名和邮箱这个会在你长期不用博客，然后回过神想写博客的时候用到
+1$ git config --global user.name &quot;yourname&quot;
+
+1$ git config --global user.email &quot;1007420679@qq.com&quot;
+
+更新文章1$ hexo g
+
+缺少模块如果提示你缺少某系模块的话，直接安装
+
+1$ cnpm install cheerio
+
+
+上传文章1$ hexo ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/p/b707920b.html" title="记录升级hexo和博客主题遇到的那些事儿">     <img class="post_bg" src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录升级hexo和博客主题遇到的那些事儿"></a></div><div class="recent-post-info"><a class="article-title" href="/p/b707920b.html" title="记录升级hexo和博客主题遇到的那些事儿">记录升级hexo和博客主题遇到的那些事儿</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-21T14:28:59.000Z" title="发表于 2020-10-21 22:28:59">2020-10-21</time></span></div><div class="content">主题升级，站点升级前言好久没有碰我的小网站了，最近有时间，就回头来看看，发现更新了主题，hexo 也有最新版的，所以想尝尝鲜叭~
+升级hexo 升级我是参照这个博客说明进行更新的。
+
+1npm update
+
+主题升级最近工作不忙，晚上特意更新一版，把我的网站做的更有趣些
+首先给主题升级一下，这个版本是 3.2 的，原先不知道哪个版本的哈哈哈。
+![git pull](C:\Users\10074\Desktop\git pull.png)
+安装插件豆瓣豆瓣插件 git
+使用这个，先 hexo douban 
+坑文章 title 都没了本来的 hexo  默认是以文件名字作为title的，现在似乎不好使了，只能在md文件里写上必须的字段title了，所以以后写文章可以这样了：hexo new 文章title
+
+报错
+把主题文件重新git 下来就好了。
+这一步因为主题文件更新了，所以config 也由很多新的字段，用原先的config 就会出现上面图片的报错
+代码格式</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/p/94540e94.html" title="【日记】周末闲聊001">     <img class="post_bg" src="https://i.loli.net/2020/02/20/p9Jetw4sbSMGnX5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【日记】周末闲聊001"></a></div><div class="recent-post-info"><a class="article-title" href="/p/94540e94.html" title="【日记】周末闲聊001">【日记】周末闲聊001</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-18T11:54:34.040Z" title="发表于 2020-10-18 19:54:34">2020-10-18</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a></span></div><div class="content">周末随心记学习标签函数123456789101112131415let a = 1,    b = 2;function zipTag(strings, ...rest) &#123;    console.log(strings);   // 这是个数组    [&quot;&quot;, &quot; + &quot;, &quot; = &quot;, &quot;&quot;, raw: Array(4)]       return (        strings[0] +        rest        .map((e, i) =&gt; &#123;            return `$&#123;e&#125;$&#123;strings[i + 1]&#125;`;        &#125;)        .join(&quot;&quot;)       // map 返回数组，然后拼接    );&#125;let tag = zipTag`$&#123;a&#125; + $&#123;b&#125; = $&#123;a + b&#125;`;c ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客">     <img class="post_bg" src="https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="换硬盘之后如何迁移 hexo 博客"></a></div><div class="recent-post-info"><a class="article-title" href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客">换硬盘之后如何迁移 hexo 博客</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T05:01:41.312Z" title="发表于 2020-09-20 13:01:41">2020-09-20</time></span></div><div class="content">换硬盘之后如何迁移博客
 最近把我原先的机械硬盘换了个固态~哎呀好香啊，不仅开机没有了机械硬盘旋转的声音，而且加载LOL都顺畅无比，美滋滋
 然而原先的 hexo 博客还在里面呢，此文记录一下半价的过程
 
 参考博客1. Hexo博客开发之——电脑重装系统后如何恢复Hexo博客
-2. hexo 报错 –  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/p/48116.html" title="批量更改文件名"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="批量更改文件名"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span><div class="content">问题来源弄着博客时候，找个很多好看的图片，然后先给他们起个名字好上传到图床，自己改太累了，索性弄个Python改
-程序python1234567891011121314151617181920212223242526272829303132import osimport reimport sys#  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/p/45929.html" title="建立商城简单后台的过程"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/SsOtG6DBef9xm3F.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建立商城简单后台的过程"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span><div class="content">给自己的小商城建立简单后台的过程使用到的工具
+2. hexo 报错 – TypeError: Cannot read property ‘removeAttr’ of undefined
+原理其实很好弄，只需要把除了 node-module 外的其他文件夹拷贝过来即可，
+然后在npm i 一下，不过肯定没那么顺利的啦，卡一卡很正常，看看报错信息然后百度一下
+遇到的坑count of undefined
+解决方法如下，删掉这个插件，很暴力….
+1$ cnpm install hexo-baidu-url-submit --save
+
+TypeError: Cannot read property ‘removeAttr’ of undefined这个是我的一篇 文章里的图片链接失效了，导致 hexo g 的时候编译失败
+解决办法就是找打那篇文章，删掉也好修改也好~ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/p/48116.html" title="批量更改文件名">     <img class="post_bg" src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="批量更改文件名"></a></div><div class="recent-post-info"><a class="article-title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:56:07.531Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span></div><div class="content">问题来源弄着博客时候，找个很多好看的图片，然后先给他们起个名字好上传到图床，自己改太累了，索性弄个Python改
+程序1234567891011121314151617181920212223242526272829303132import osimport reimport sys# 这里写你要修改的文件夹位置fileList = os.listdir(r&quot;C:\Users\10074\Desktop\picdiet&quot;)print(&quot;修改前：&quot; + str(fileList))# 得到进程当前工作目录currentpath = os.getcwd()# 将当前工作目录修改为待修改文件夹的位置os.chdir(r&quot;C:\Users\10074\Desktop\picdiet&quot;)# 名称变量num = 1# 遍历文件夹中所有文件for fileName in fileList:    # 匹配文件名正则表达式    pat = &quot;.+\.(jpg)&quot;    # 进行匹配    pattern = re.fin ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/p/45929.html" title="建立商城简单后台的过程">     <img class="post_bg" src="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建立商城简单后台的过程"></a></div><div class="recent-post-info"><a class="article-title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:56:07.491Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span></div><div class="content">给自己的小商城建立简单后台的过程使用到的工具
 Node.js
 
 Node.js既不是框架，也不是个语言，他是一个平台，可以运行JavaScript语言，没有Dom、Bom
@@ -92,14 +199,51 @@ MongoDB
 非关系型数据库，跟Node.js是个不错的好基友
 
 
-Mongo ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/p/27114.html" title="【项目】手持弹幕"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/03/21/SrMgZaBlf4b6iAG.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】手持弹幕"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/27114.html" title="【项目】手持弹幕">【项目】手持弹幕</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span><div class="content">效果
+Mongoose
+
+
+这里简单介绍，我会看一个新的板块去整理这些工具的知识
+安装 Node 和  数据库 Mongo
+Node.js
+
+官网地址：https://nodejs.org/zh-cn/
+安装的时候一直Next即可
+
+
+MongoDB
+
+官网地址：https://www.mongodb.com/
+可能有网络问题，请使用魔法，科学上网 =_ =
+
+
+Mongoose
+
+在cmd中执行命令
+
+1npm install mongoose
+
+
+
+
+
+建立http服务简单的http服务主要的逻辑是
+
+创建http服务
+监听request请求
+监听端口，开启服务
+
+新建xxx.js文件
+123456789101112131415161718// 最简单的服务搭建var http = require(&q ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/p/27114.html" title="【项目】手持弹幕">     <img class="post_bg" src="https://i.loli.net/2020/02/20/1KvftpdahLWTbB4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】手持弹幕"></a></div><div class="recent-post-info"><a class="article-title" href="/p/27114.html" title="【项目】手持弹幕">【项目】手持弹幕</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:56:07.401Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">效果
 主要点
 做的时候还挺顺的，因为思路已经想好了，之前有个版本我是把page旋转90度，然后我就傻逼了
-这个用到了新的    input 属性 cursor-spacing='10' 这个是软键盘跟光标的距离，不设置的话在手机端会有点难看关键步骤
+这个用到了新的    input 属性 cursor-spacing=&#39;10&#39; 这个是软键盘跟光标的距离，不设置的话在手机端会有点难看关键步骤
 
 
 文字的旋转，主要的就是给他一点点高度
-css1 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/p/12602.html" title="【美食】可乐鸡腿"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/3PzcKpZwuHoLhgq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【美食】可乐鸡腿"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/12602.html" title="【美食】可乐鸡腿">【美食】可乐鸡腿</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></span><div class="content">材料
+12345678910111213.text&#123;  transform:rotate(90deg);  height: 1rpx;  display: flex;  align-items: center;    white-space: nowrap;  /* background-color: salmon; */  position: fixed;  top: 280%;  color: white;  /* margin-top: -1%; */	&#125;
+
+弹幕动画的制作
+12345678@keyframes animateText&#123;  0%&#123;    margin-top: 0%;  &#125;  100%&#123;    margin- ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/p/12602.html" title="【美食】可乐鸡腿">     <img class="post_bg" src="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【美食】可乐鸡腿"></a></div><div class="recent-post-info"><a class="article-title" href="/p/12602.html" title="【美食】可乐鸡腿">【美食】可乐鸡腿</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:56:07.361Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></span></div><div class="content">材料
 鸡腿一斤
 可乐250ml
 适量的盐，一段儿葱，一片姜
@@ -109,7 +253,14 @@ css1 ...</div></div></div><div class="recent-post-item article-container"><div c
 鸡腿洗净，葱姜切片
 锅内烧烤开水，放入鸡腿再次煮滚捞出沥干水，鸡腿改刀（就是用刀子🔪划几下，好入味）
 锅内放入少量油，放入鸡腿煎至两面泛黄
-倒入可乐、老抽、加葱姜盐料酒，烧开转小火，大约15min后即可出锅 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/p/3299.html" title="【美食】万能蘸料"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/rOBRPg1ptDkuHoQ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【美食】万能蘸料"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/3299.html" title="【美食】万能蘸料">【美食】万能蘸料</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></span><div class="content">材料
+倒入可乐、老抽、加葱姜盐料酒，烧开转小火，大约15min后即可出锅
+
+效果
+总结
+感觉还是淡，可能是没有腌制，或是盐放少了
+菜系偏甜
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/p/3299.html" title="【美食】万能蘸料">     <img class="post_bg" src="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【美食】万能蘸料"></a></div><div class="recent-post-info"><a class="article-title" href="/p/3299.html" title="【美食】万能蘸料">【美食】万能蘸料</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:56:07.344Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></span></div><div class="content">材料
 白芝麻、辣椒碎、辣椒面、孜然粉、蒜沫、小葱沫、小米辣
 蚝油、盐、白糖（视个人口味定量）
 食用油
@@ -123,35 +274,42 @@ css1 ...</div></div></div><div class="recent-post-item article-container"><div c
 总结
 还挺成功的，我蘸着蒸茄子吃的，跟烧烤店的味道差不多呢
 
-</div></div></div><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/p/16139.html" title="【经济学_05】晨读 "><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【经济学_05】晨读 "></a></div><div class="recent-post-info">  <a class="article-title" href="/p/16139.html" title="【经济学_05】晨读 ">【经济学_05】晨读 </a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E9%87%91%E8%9E%8D/">金融</a></span><div class="content">晨读：一个普通人怎样靠股票赚到100 万？ 每个人都可以做到！总结
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/p/16139.html" title="【经济学_05】晨读">     <img class="post_bg" src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【经济学_05】晨读"></a></div><div class="recent-post-info"><a class="article-title" href="/p/16139.html" title="【经济学_05】晨读">【经济学_05】晨读</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:56:07.328Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E9%87%91%E8%9E%8D/">金融</a></span></div><div class="content">晨读：一个普通人怎样靠股票赚到100 万？ 每个人都可以做到！总结
 优秀的储蓄容器：定投股市
 着眼未来，目光放的长远些
 不要不切实际的对投资收益的追求，以及平时不注重储蓄的生活习惯，从小事做起
 哈佛教条：无论每个月的收入是多少，一定要先存下20%，在花剩下的80% 
-两种思维：一种是先存钱，然后花剩 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/p/43961.html" title="【经济学_04】晨读：保险的实质 &amp;  特效药 &amp; 医疗膨胀 &amp; 保险的发明"><img class="post_bg lazyload" data-src="https://i.loli.net/2020/02/20/3PzcKpZwuHoLhgq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【经济学_04】晨读：保险的实质 &amp;  特效药 &amp; 医疗膨胀 &amp; 保险的发明"></a></div><div class="recent-post-info">  <a class="article-title" href="/p/43961.html" title="【经济学_04】晨读：保险的实质 &amp;  特效药 &amp; 医疗膨胀 &amp; 保险的发明">【经济学_04】晨读：保险的实质 &amp;  特效药 &amp; 医疗膨胀 &amp; 保险的发明</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-20</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E9%87%91%E8%9E%8D/">金融</a></span><div class="content">保险的实质文章链接：https://docs.qq.com/doc/DRExWRnh4WkN6UU9s
-情景父母说如果孩子生病，那说什么都得治
-如果自己生病，能不给孩子添麻烦就不给孩子添麻烦
-这个麻烦说的是什么呢？我想更多的还是钱吧
-如果能在风险来临之前，把风险提前转移 给保险公司就好了
-认知希望通 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-info__name">Lovely Ruby</div><div class="author-info__description">努力做一名坚韧善良的人！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">55</div></a></div><div class="card-info-data-item is-center">      <a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div><div class="card-info-data-item is-center">     <a href="/categories/"><div class="headline">分类</div><div class="length_num">7</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Amethyst-Ruby" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">武汉加油！</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/p/94540e94.html"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="【日记】周末闲聊001" alt="【日记】周末闲聊001"></div><div class="aside-post-title"><div class="aside-post_title" href="/p/94540e94.html" title="【日记】周末闲聊001">【日记】周末闲聊001</div><time class="aside-post_meta post-meta__date">2020-10-18</time></div></a></div><div class="aside-recent-post"><a href="/p/f31fa1f4.html"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.loli.net/2020/02/20/4U8aZp7gyieQAmH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="换硬盘之后如何迁移 hexo 博客" alt="换硬盘之后如何迁移 hexo 博客"></div><div class="aside-post-title"><div class="aside-post_title" href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客">换硬盘之后如何迁移 hexo 博客</div><time class="aside-post_meta post-meta__date">2020-09-20</time></div></a></div><div class="aside-recent-post"><a href="/p/48116.html"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="批量更改文件名" alt="批量更改文件名"></div><div class="aside-post-title"><div class="aside-post_title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</div><time class="aside-post_meta post-meta__date">2020-09-20</time></div></a></div><div class="aside-recent-post"><a href="/p/45929.html"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.loli.net/2020/02/20/SsOtG6DBef9xm3F.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="建立商城简单后台的过程" alt="建立商城简单后台的过程"></div><div class="aside-post-title"><div class="aside-post_title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</div><time class="aside-post_meta post-meta__date">2020-09-20</time></div></a></div><div class="aside-recent-post"><a href="/p/27114.html"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.loli.net/2020/03/21/SrMgZaBlf4b6iAG.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="【项目】手持弹幕" alt="【项目】手持弹幕"></div><div class="aside-post-title"><div class="aside-post_title" href="/p/27114.html" title="【项目】手持弹幕">【项目】手持弹幕</div><time class="aside-post_meta post-meta__date">2020-09-20</time></div></a></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fa fa-folder-open" aria-hidden="true"></i><span>分类</span></div><ul class="aside-category-item">       <li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E5%88%9D%E5%A7%8B%E6%96%87%E7%AB%A0/"><span class="aside-category-list_name">初始文章</span><span class="aside-category-list_length">1</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E6%97%A5%E5%B8%B8/"><span class="aside-category-list_name">日常</span><span class="aside-category-list_length">3</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E6%97%A5%E8%AE%B0/"><span class="aside-category-list_name">日记</span><span class="aside-category-list_length">1</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/"><span class="aside-category-list_name">计算机语言</span><span class="aside-category-list_length">42</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E8%AF%AD%E8%A8%80/"><span class="aside-category-list_name">语言</span><span class="aside-category-list_length">1</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E9%87%91%E8%9E%8D/"><span class="aside-category-list_name">金融</span><span class="aside-category-list_length">5</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E9%A1%B9%E7%9B%AE/"><span class="aside-category-list_name">项目</span><span class="aside-category-list_length">1</span></a></li></ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Javascript-%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #99a9bf">Javascript 笔记</a> <a href="/tags/Node-js/" style="font-size: 16px; color: #999">Node.js</a> <a href="/tags/Python/" style="font-size: 20px; color: #99a1ac">Python</a> <a href="/tags/%E5%86%99%E5%8D%9A%E5%AE%A2/" style="font-size: 18px; color: #999da3">写博客</a> <a href="/tags/%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95/" style="font-size: 18px; color: #999da3">初级算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%8A%95%E8%B5%84%E7%9F%A5%E8%AF%86/" style="font-size: 22px; color: #99a5b6">基础投资知识</a> <a href="/tags/%E5%BB%BA%E7%AB%99/" style="font-size: 18px; color: #999da3">建站</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 16px; color: #999">微信小程序</a> <a href="/tags/%E6%90%9E%E6%9C%BA/" style="font-size: 16px; color: #999">搞机</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E6%96%87%E6%B3%95/" style="font-size: 16px; color: #999">日语文法</a> <a href="/tags/%E7%B2%BE%E8%AE%B2/" style="font-size: 18px; color: #999da3">精讲</a> <a href="/tags/%E7%BE%8E%E9%A3%9F/" style="font-size: 18px; color: #999da3">美食</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 16px; color: #999">问题</a> <a href="/tags/%E9%9A%8F%E5%BF%83%E8%AE%B0/" style="font-size: 16px; color: #999">随心记</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 16px; color: #999">项目</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/"><span class="archive-list-date">2020年10月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/"><span class="archive-list-date">2020年09月</span><span class="archive-list-count">48</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/"><span class="archive-list-date">2020年03月</span><span class="archive-list-count">5</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><span class="archive-list-date">2020年02月</span><span class="archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">55</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="2020/01/07 00:00:00">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/02/20/lFx7LrdSh4uk3Ue.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lovely Ruby</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a href="http://hl.beian.miit.gov.cn/" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>黑ICP备20000233号</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://script-1256884783.file.myqcloud.com/cursor/fireworks.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script id="ribbon" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/activate-power-mode/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = false; 
-document.body.addEventListener('input', POWERMODE);
-</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script><script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script><script>fetch('https://v1.hitokoto.cn')
-.then(function (res){
-  return res.json();
-})
-.then(function (data) {
-  var sub = '欢迎来到我的小窝&#44;请随意看哦~,Never put off till tomorrow what you can do today'.length == 0  ? new Array() : '欢迎来到我的小窝&#44;请随意看哦~,Never put off till tomorrow what you can do today'.split(",");
-  var both = sub.unshift(data.hitokoto)  
-  var typed = new Typed(".subtitle", {
-  strings: sub,
-  startDelay: 300,
-  typeSpeed: 100,
-  loop: true,
-  backSpeed: 50
-  });
-})
-.catch(function (err) {
-  console.error(err);
-})</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":130,"height":260,"hOffset":40,"vOffset":-10},"mobile":{"show":false},"log":false});</script></body></html>
+两种思维：一种是先存钱，然后花剩下的。另一种是先花钱，然后把剩下的存起来。没做过的人看似没有区别，但真的那么做以后，区别真的很大
+对于大部分人呢，学会储蓄才是最先要做的事情
+20%的算计不仅仅是表面的大钱小钱的问题，更深层次的是人生成本的问题，相比于月光族，那一点看似不多的储蓄带来的不止是表面的金钱数字，重要的是它还可能是一次摆脱现状的机会
+人为什么要买保险？因为对于同一个人来说，同样的钱，效用是不同的。就像吃饭，吃8个馒头人会觉的饱，但第八个馒头和第一个馒头的作用是截然不同的，对于一个快饿死的人而言，第一个馒头是“救命”用的。
+买保险虽然从纯数字上看可能是亏的，但大部分保险的真正意义是用平日里丰衣足食的第八个馒头，去换快饿死时的第一个馒头，从边际效用的角度看，是划算的。因为越是接近0的资产，所产生的收益越大，效用越大
+储 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/Amethyst-Ruby/myCDN/img/login.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Lovely Ruby</div><div class="author-info__description">努力做一名坚韧善良的人！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">56</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Amethyst-Ruby"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Amethyst-Ruby" target="_blank" title=""><i class="fab fa-git"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank" title=""><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://m.weibo.cn/profile/2847822941" target="_blank" title=""><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/Amethyst_Ruby_" target="_blank" title=""><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://www.pixiv.net/users/18912544" target="_blank" title=""><i class="fab fa-product-hunt"></i></a><a class="social-icon" href="https://blog.csdn.net/u010263423" target="_blank" title=""><i class="fab fa-codiepie"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小窝！</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/p/b707920b.html" title="记录升级hexo和博客主题遇到的那些事儿"><img src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录升级hexo和博客主题遇到的那些事儿"/></a><div class="content"><a class="title" href="/p/b707920b.html" title="记录升级hexo和博客主题遇到的那些事儿">记录升级hexo和博客主题遇到的那些事儿</a><time datetime="2020-10-21T14:28:59.000Z" title="发表于 2020-10-21 22:28:59">2020-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/94540e94.html" title="【日记】周末闲聊001"><img src="https://i.loli.net/2020/02/20/p9Jetw4sbSMGnX5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【日记】周末闲聊001"/></a><div class="content"><a class="title" href="/p/94540e94.html" title="【日记】周末闲聊001">【日记】周末闲聊001</a><time datetime="2020-10-18T11:54:34.040Z" title="发表于 2020-10-18 19:54:34">2020-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客"><img src="https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="换硬盘之后如何迁移 hexo 博客"/></a><div class="content"><a class="title" href="/p/f31fa1f4.html" title="换硬盘之后如何迁移 hexo 博客">换硬盘之后如何迁移 hexo 博客</a><time datetime="2020-09-20T05:01:41.312Z" title="发表于 2020-09-20 13:01:41">2020-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/48116.html" title="批量更改文件名"><img src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="批量更改文件名"/></a><div class="content"><a class="title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</a><time datetime="2020-09-20T03:56:07.531Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/45929.html" title="建立商城简单后台的过程"><img src="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建立商城简单后台的过程"/></a><div class="content"><a class="title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</a><time datetime="2020-09-20T03:56:07.491Z" title="发表于 2020-09-20 11:56:07">2020-09-20</time></div></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="card-content"><div class="item-headline"><i class="fas fa-bolt"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%88%9D%E5%A7%8B%E6%96%87%E7%AB%A0/"><span class="card-category-list-name">初始文章</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/"><span class="card-category-list-name">日常</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/"><span class="card-category-list-name">日记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">计算机语言</span><span class="card-category-list-count">42</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">语言</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%87%91%E8%9E%8D/"><span class="card-category-list-name">金融</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/"><span class="card-category-list-name">项目</span><span class="card-category-list-count">1</span></a></li>
+            
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Javascript-%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">Javascript 笔记</a> <a href="/tags/Node-js/" style="font-size: 1.1em; color: #999">Node.js</a> <a href="/tags/Python/" style="font-size: 1.3em; color: #99a1ac">Python</a> <a href="/tags/%E5%86%99%E5%8D%9A%E5%AE%A2/" style="font-size: 1.2em; color: #999da3">写博客</a> <a href="/tags/%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95/" style="font-size: 1.2em; color: #999da3">初级算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%8A%95%E8%B5%84%E7%9F%A5%E8%AF%86/" style="font-size: 1.4em; color: #99a5b6">基础投资知识</a> <a href="/tags/%E5%BB%BA%E7%AB%99/" style="font-size: 1.2em; color: #999da3">建站</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.1em; color: #999">微信小程序</a> <a href="/tags/%E6%90%9E%E6%9C%BA/" style="font-size: 1.1em; color: #999">搞机</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E6%96%87%E6%B3%95/" style="font-size: 1.1em; color: #999">日语文法</a> <a href="/tags/%E7%B2%BE%E8%AE%B2/" style="font-size: 1.2em; color: #999da3">精讲</a> <a href="/tags/%E7%BE%8E%E9%A3%9F/" style="font-size: 1.2em; color: #999da3">美食</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 1.1em; color: #999">问题</a> <a href="/tags/%E9%9A%8F%E5%BF%83%E8%AE%B0/" style="font-size: 1.1em; color: #999">随心记</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.1em; color: #999">项目</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">48</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/02/"><span class="card-archive-list-date">二月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">56</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-01-02T13:07:15.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">92.6k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-22T12:16:59.023Z"></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/02/20/lFx7LrdSh4uk3Ue.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 By Lovely Ruby</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://hl.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>黑ICP备20000233号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  $.getJSON('https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json',function (data) {
+    if (true) {
+      var sub = "欢迎来到 Ruby 的小窝~".length == 0 ? new Array() : "欢迎来到 Ruby 的小窝~".split(',')
+      var both = sub.unshift(data.text)
+      typed = new Typed('#subtitle', {
+        strings: sub,
+        startDelay: 300,
+        typeSpeed: 150,
+        loop: true,
+        backSpeed: 50,
+      })
+    } else {
+      document.getElementById('subtitle').innerHTML = data.text
+    }
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://script-1256884783.file.myqcloud.com/cursor/fireworks.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":130,"height":260,"hOffset":40,"vOffset":-10},"mobile":{"show":false},"log":false});</script></body></html>
