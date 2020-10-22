@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangzhongqing.xyz/"/>
-  <updated>2020-10-21T14:37:04.722Z</updated>
+  <updated>2020-10-22T12:40:27.661Z</updated>
   <id>https://wangzhongqing.xyz/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://wangzhongqing.xyz/p/b707920b.html"/>
     <id>https://wangzhongqing.xyz/p/b707920b.html</id>
     <published>2020-10-21T14:28:59.000Z</published>
-    <updated>2020-10-21T14:37:04.722Z</updated>
+    <updated>2020-10-22T12:40:27.661Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="主题升级，站点升级"><a href="#主题升级，站点升级" class="headerlink" title="主题升级，站点升级"></a>主题升级，站点升级</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>好久没有碰我的小网站了，最近有时间，就回头来看看，发现更新了主题，hexo 也有最新版的，所以想尝尝鲜叭~</p><h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><h3 id="hexo-升级"><a href="#hexo-升级" class="headerlink" title="hexo 升级"></a>hexo 升级</h3><p>我是参照这个<a href="https://shenbo.github.io/2020/07/30/hexo/hexo-%E5%8D%87%E7%BA%A7%E8%87%B3%20HEXO%205.0/">博客说明</a>进行更新的。</p><p><img src="C:%5CUsers%5C10074%5CDesktop%5CSnipaste_2020-10-20_20-41-00.png" alt="Snipaste_2020-10-20_20-41-00"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure><h3 id="主题升级"><a href="#主题升级" class="headerlink" title="主题升级"></a>主题升级</h3><p>最近工作不忙，晚上特意更新一版，把我的网站做的更有趣些</p><p>首先给主题升级一下，这个版本是 3.2 的，原先不知道哪个版本的哈哈哈。</p><p>![git pull](C:\Users\10074\Desktop\git pull.png)</p><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><h3 id="豆瓣"><a href="#豆瓣" class="headerlink" title="豆瓣"></a>豆瓣</h3><p><a href="https://github.com/mythsman/hexo-douban">豆瓣插件 git</a></p><p>使用这个，先 <code>hexo douban</code> </p><h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="文章-title-都没了"><a href="#文章-title-都没了" class="headerlink" title="文章 title 都没了"></a>文章 title 都没了</h3><p>本来的 hexo  默认是以文件名字作为<code>title</code>的，现在似乎不好使了，只能在<code>md</code>文件里写上必须的字段<code>title</code>了，所以以后写文章可以这样了：<code>hexo new 文章title</code></p><p><img src="C:%5CUsers%5C10074%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201021223407345.png" alt="image-20201021223407345"></p><h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="C:%5CUsers%5C10074%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201020223124390.png" alt="image-20201020223124390"></p><p>把主题文件重新git 下来就好了。</p><p>这一步因为主题文件更新了，所以config 也由很多新的字段，用原先的config 就会出现上面图片的报错</p><h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3>]]></content>
+    <content type="html"><![CDATA[<h1 id="主题升级，站点升级"><a href="#主题升级，站点升级" class="headerlink" title="主题升级，站点升级"></a>主题升级，站点升级</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>好久没有碰我的小网站了，最近有时间，就回头来看看，发现更新了主题，hexo 也有最新版的，所以想尝尝鲜叭~</p><h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><h3 id="hexo-升级"><a href="#hexo-升级" class="headerlink" title="hexo 升级"></a>hexo 升级</h3><p>我是参照这个<a href="https://shenbo.github.io/2020/07/30/hexo/hexo-%E5%8D%87%E7%BA%A7%E8%87%B3%20HEXO%205.0/">博客说明</a>进行更新的。</p><p><img src="https://img-blog.csdnimg.cn/20201022203423302.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure><h3 id="主题升级"><a href="#主题升级" class="headerlink" title="主题升级"></a>主题升级</h3><p>最近工作不忙，晚上特意更新一版，把我的网站做的更有趣些</p><p>首先给主题升级一下，这个版本是 3.2 的，原先不知道哪个版本的哈哈哈。</p><p><img src="https://img-blog.csdnimg.cn/20201022203500155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><h3 id="豆瓣"><a href="#豆瓣" class="headerlink" title="豆瓣"></a>豆瓣</h3><p><a href="https://github.com/mythsman/hexo-douban">豆瓣插件 git</a></p><p>使用这个，先 <code>hexo douban</code> </p><h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="文章-title-都没了"><a href="#文章-title-都没了" class="headerlink" title="文章 title 都没了"></a>文章 title 都没了</h3><p>本来的 hexo  默认是以文件名字作为<code>title</code>的，现在似乎不好使了，只能在<code>md</code>文件里写上必须的字段<code>title</code>了，所以以后写文章可以这样了：<code>hexo new 文章title</code></p><p><img src="https://img-blog.csdnimg.cn/20201022203658804.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="https://img-blog.csdnimg.cn/20201022203717110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><p>把主题文件重新git 下来就好了。</p><p>这一步因为主题文件更新了，所以config 也由很多新的字段，用原先的config 就会出现上面图片的报错</p><h3 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h3><h3 id="部署后网站上样式崩坏"><a href="#部署后网站上样式崩坏" class="headerlink" title="部署后网站上样式崩坏"></a>部署后网站上样式崩坏</h3><p>我在本地已经调试好了，准备 <code>push</code> 上去，完后发现网站样式崩了</p><p><img src="https://img-blog.csdnimg.cn/20201022203911574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><p>其实清理浏览器的缓存就可以了，我用的是 <code>chrome</code></p>]]></content>
     
     <summary type="html">
     
@@ -35,6 +35,8 @@
     </summary>
     
     
+    
+      <category term="建站" scheme="https://wangzhongqing.xyz/tags/%E5%BB%BA%E7%AB%99/"/>
     
   </entry>
   
