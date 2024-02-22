@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【前端39_数据库】数据库基础、Node 中链接数据库并使用 | Rubyのいえ</title><meta name="author" content="Lovely Ruby,1007420679@qq.com"><meta name="copyright" content="Lovely Ruby"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据库为什么要用数据库数据持久化保存，如果用文件保存的话，增删查改的话会比较费劲 下载官网 基本操作建立表我去之前连建表都没写，淦！写的笔记也太不完善了。 今年建表遇到个问题我用navcat 去修改数据也会报错 这说明是建数据库的时候数据集设置的不对。 我尝试了在原有的 database 上修改数据集，但是还是不可以输入中文，无奈只能删掉数据库重新建表 12utf8;utf8_general_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【前端39_数据库】数据库基础、Node 中链接数据库并使用">
+<meta property="og:url" content="https://wangzhongqing.fun/p/118091334.html">
+<meta property="og:site_name" content="Rubyのいえ">
+<meta property="og:description" content="数据库为什么要用数据库数据持久化保存，如果用文件保存的话，增删查改的话会比较费劲 下载官网 基本操作建立表我去之前连建表都没写，淦！写的笔记也太不完善了。 今年建表遇到个问题我用navcat 去修改数据也会报错 这说明是建数据库的时候数据集设置的不对。 我尝试了在原有的 database 上修改数据集，但是还是不可以输入中文，无奈只能删掉数据库重新建表 12utf8;utf8_general_">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg">
+<meta property="article:published_time" content="2021-06-22T06:16:01.000Z">
+<meta property="article:modified_time" content="2024-02-22T06:36:53.154Z">
+<meta property="article:author" content="Lovely Ruby">
+<meta property="article:tag" content="Javascript 笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png"><link rel="canonical" href="https://wangzhongqing.fun/p/118091334.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【前端39_数据库】数据库基础、Node 中链接数据库并使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-22 14:36:53'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/font/font.css"><script src="/js/jquery-3.7.1.min.js"></script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-flask"></i><span> 实验室</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/fireworks/"><i class="fa-fw fas fa-tint"></i><span> 液体特效</span></a></li><li><a class="site-page child" href="/mikutap/"><i class="fa-fw fas fa-headphones-alt"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/dot/"><i class="fa-fw fas fa-braille"></i><span> Shape-shifter</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-user"></i><span> 站长</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Rubyのいえ"><span class="site-name">Rubyのいえ</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-flask"></i><span> 实验室</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/fireworks/"><i class="fa-fw fas fa-tint"></i><span> 液体特效</span></a></li><li><a class="site-page child" href="/mikutap/"><i class="fa-fw fas fa-headphones-alt"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/dot/"><i class="fa-fw fas fa-braille"></i><span> Shape-shifter</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-user"></i><span> 站长</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【前端39_数据库】数据库基础、Node 中链接数据库并使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-22T06:16:01.000Z" title="发表于 2021-06-22 14:16:01">2021-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-22T06:36:53.154Z" title="更新于 2024-02-22 14:36:53">2024-02-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【前端39_数据库】数据库基础、Node 中链接数据库并使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="为什么要用数据库"><a href="#为什么要用数据库" class="headerlink" title="为什么要用数据库"></a>为什么要用数据库</h3><p>数据持久化保存，如果用文件保存的话，增删查改的话会比较费劲</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">官网</a></p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="建立表"><a href="#建立表" class="headerlink" title="建立表"></a>建立表</h3><p>我去之前连建表都没写，淦！写的笔记也太不完善了。</p>
+<p>今年建表遇到个问题<br><img src="https://img-blog.csdnimg.cn/20210707142545956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>我用<code>navcat</code> 去修改数据也会报错<br><img src="https://img-blog.csdnimg.cn/20210707143413942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这说明是<code>建数据库</code>的时候<code>数据集</code>设置的不对。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210707143754963.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>我尝试了在原有的 <code>database</code> 上修改数据集，但是还是不可以输入中文，无奈只能删掉数据库重新建表<br><img src="https://img-blog.csdnimg.cn/20210707145056426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">utf8;</span><br><span class="line">utf8_general_ci;</span><br></pre></td></tr></table></figure>
+
+<h3 id="增：INSERT-INTO"><a href="#增：INSERT-INTO" class="headerlink" title="增：INSERT INTO"></a>增：INSERT INTO</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">INSERT</span> <span class="variable constant_">INTO</span> 表名(字段一,字段二,字段三) <span class="variable constant_">VALUES</span> (<span class="string">&quot;值一&quot;</span>，<span class="string">&quot;值二&quot;</span>，值三);</span><br><span class="line"><span class="comment">// 举例1</span></span><br><span class="line"><span class="variable constant_">INSERT</span> user (username,pwd,age,sex) <span class="variable constant_">VALUES</span> (<span class="string">&#x27;李四&#x27;</span>,<span class="number">123</span>,<span class="number">28</span>,<span class="string">&#x27;男&#x27;</span>);</span><br><span class="line"><span class="comment">// 举例2 node 中</span></span><br><span class="line"><span class="comment">// 注意：</span></span><br><span class="line"><span class="comment">// - 占位符的逗号别是中文的，否则会报错 mysql 的语法错误</span></span><br><span class="line"><span class="keyword">const</span> [rows_insert] = <span class="keyword">await</span> connection</span><br><span class="line">      .<span class="title function_">promise</span>()</span><br><span class="line">      .<span class="title function_">execute</span>(</span><br><span class="line">        <span class="string">`INSERT INTO friends (openid, name, lunarDate, solarDate, isOfficialAccountReminder, isRemindSolar, isRemindLunar, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`</span>,</span><br><span class="line">        [openid, name, lunarDate, solarDate, isOfficialAccountReminder, isRemindSolar, isRemindLunar, remark]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210622151629896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="删：DELETE-FROM"><a href="#删：DELETE-FROM" class="headerlink" title="删：DELETE FROM"></a>删：DELETE FROM</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">DELETE</span> <span class="variable constant_">FROM</span> 表名 条件语句；</span><br><span class="line"><span class="comment">// 举例：DELETE FROM user WHERE id=2;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>假删除<br>思路：通过更新代替删除<br>操作：添加个字段： <code>is_delete</code></p>
+</blockquote>
+<h3 id="改：UPDATE"><a href="#改：UPDATE" class="headerlink" title="改：UPDATE"></a>改：UPDATE</h3><p>如果改的字段比较多的话，是不需要添加括号的，添加括号之后 <code>Node</code> 会提示报错。<br>注意：<code>WHERE</code> 不可以提前，在 <code>node</code> 中会不好使<br><img src="https://img-blog.csdnimg.cn/0381baab2ca8459eab7d82bf2e64a981.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">UPDATE</span> 表名 <span class="variable constant_">SET</span> 字段=<span class="string">&#x27;值&#x27;</span> 条件语句</span><br><span class="line"><span class="comment">// 举例1：UPDATE user SET username=&#x27;李四&#x27; WHERE id = 3;</span></span><br><span class="line"><span class="comment">// 举例2： UPDATE users SET openid = &#x27;$&#123;openid&#125;&#x27;, unionid = &#x27;$&#123;unionid&#125;&#x27;, nickName = &#x27;$&#123;nickName&#125;&#x27; WHERE id = $&#123;id&#125;</span></span><br><span class="line"><span class="comment">// 举例3：建议用第二种方法</span></span><br><span class="line"><span class="keyword">const</span> [rows_update] = <span class="keyword">await</span> connection</span><br><span class="line">  .<span class="title function_">promise</span>()</span><br><span class="line">  .<span class="title function_">query</span>(</span><br><span class="line">    <span class="string">`UPDATE users SET openid = &#x27;<span class="subst">$&#123;openid&#125;</span>&#x27;, unionid = &#x27;<span class="subst">$&#123;unionid&#125;</span>&#x27;, nickName = &#x27;<span class="subst">$&#123;nickName&#125;</span>&#x27; WHERE id = <span class="subst">$&#123;id&#125;</span>`</span></span><br><span class="line">  )</span><br><span class="line"><span class="keyword">const</span> [rows_update] = <span class="keyword">await</span> connection</span><br><span class="line">  .<span class="title function_">promise</span>()</span><br><span class="line">  .<span class="title function_">query</span>(<span class="string">`UPDATE users SET openid = ?, unionid = ?, nickName = ? WHERE id = ?`</span>, [openid, unionid, nickName, id])</span><br></pre></td></tr></table></figure>
+
+<h3 id="查：SELECT-FROM"><a href="#查：SELECT-FROM" class="headerlink" title="查：SELECT FROM *"></a>查：SELECT FROM *</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SELECT</span> * <span class="variable constant_">FROM</span> 表名 条件语句；</span><br><span class="line"><span class="comment">// 举例：SELECT * FROM user WHERE id=1;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的 <code>*</code> 指的是字段，要查找的字段</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210622160125702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="查询细分"><a href="#查询细分" class="headerlink" title="查询细分"></a>查询细分</h2><h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><ul>
+<li><code>OR</code> 、<code>AND</code></li>
+<li>符号：<code>&gt;</code>、 <code>&lt;</code>、 <code>=</code> 、<code>&lt;&gt;</code> 不等、<code>!=</code> 也是不等、</li>
+<li>排列：正序：<code>ASC</code>(默认)、倒叙：<code>DESC</code>，eg：<code>SELECT * FROM org_hierarchy ORDER BY sort ASC</code></li>
+<li>分页相关：<code>LIMIT</code> ，有两个参数，<code>LIMIT 从什么位置开始查询，查询几条</code>，（举例：<code>SELECT * FROM  user ORDER BY age LIMIT 0,5;</code>）</li>
+<li>判断字段是否为 <code>NULL</code> ：<code>IS NULL</code>，中间可以加<code>NOT</code> 变成 <code>IS NOT NULL</code></li>
+</ul>
+<h3 id="模糊查询：LIKE"><a href="#模糊查询：LIKE" class="headerlink" title="模糊查询：LIKE"></a>模糊查询：LIKE</h3><ul>
+<li><p>需要 <code>LIKE</code>，和一个占位符， 例如：<code>SELECT * FROM user WHERE userName LIKE &#39;李%&#39;</code></p>
+</li>
+<li><p>如果是中间的字符的话，可以这样查询，用两个占位符<br><img src="https://img-blog.csdnimg.cn/61773d5f9d464f38b1e85f0539880ae3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<h3 id="联表查询：JOIN-ON"><a href="#联表查询：JOIN-ON" class="headerlink" title="联表查询：JOIN ON"></a>联表查询：JOIN ON</h3><p>关系型数据 <code>JOIN ON</code></p>
+<p>举例子：比方说我有两张表，内容如下</p>
+<p><img src="https://img-blog.csdnimg.cn/20210622164301983.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210622164324894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这是以左边的 <code>products</code> 为主表，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SELECT</span> * <span class="variable constant_">FROM</span>  products <span class="variable constant_">LEFT</span> <span class="variable constant_">JOIN</span> users <span class="variable constant_">ON</span> products.<span class="property">uid</span> = users.<span class="property">id</span>;</span><br><span class="line"><span class="comment">// 把表的名字简写了，用关键字：AS 。</span></span><br><span class="line"><span class="variable constant_">SELECT</span> * <span class="variable constant_">FROM</span>  products <span class="variable constant_">AS</span> p <span class="variable constant_">LEFT</span> <span class="variable constant_">JOIN</span> users <span class="variable constant_">AS</span> u <span class="variable constant_">ON</span> p.<span class="property">uid</span> = u.<span class="property">id</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210622164412279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这是以右边为主表的查询</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SELECT</span> * <span class="variable constant_">FROM</span>  products <span class="variable constant_">RIGHT</span> <span class="variable constant_">JOIN</span>  users <span class="variable constant_">ON</span> products.<span class="property">uid</span> = users.<span class="property">id</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210622164444921.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Node-中链接数据库"><a href="#Node-中链接数据库" class="headerlink" title="Node 中链接数据库"></a>Node 中链接数据库</h2><h3 id="基本写法"><a href="#基本写法" class="headerlink" title="基本写法"></a>基本写法</h3><p>首先引入 <code>mysql2</code> 这个模块,<code>mysql2</code> 是 <code>mysql</code> 的二次封装，添加了 <code>promise</code> 等</p>
+<p>然后通过 <code>mysql2.createConnection(&#123;&#125;)</code> 填写好配置信息，建立链接：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql2 = <span class="built_in">require</span>(<span class="string">&quot;mysql2&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> data = <span class="built_in">require</span>(<span class="string">&quot;./data/data.json&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connection = mysql2.<span class="title function_">createConnection</span>(&#123;</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  <span class="attr">user</span>: <span class="string">&quot;root&quot;</span>,</span><br><span class="line">  <span class="attr">password</span>: <span class="string">&quot;123&quot;</span>,</span><br><span class="line">  <span class="attr">database</span>: <span class="string">&quot;js04&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line">connection.<span class="title function_">query</span>(<span class="string">&quot;SELECT * FROM users&quot;</span>, <span class="function">(<span class="params">err, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>数据查询用 <code>connection.query()</code>，会提供一个回调函数，查询的结果放到了回调函数中的 <code>res</code> 中<br><img src="https://img-blog.csdnimg.cn/2021062216593919.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="Promise-写法"><a href="#Promise-写法" class="headerlink" title="Promise 写法"></a>Promise 写法</h3><p>这样写不够优雅，可以通过<code> connection.promise()</code>把数据变成<code>Promise</code>类型的，然后查询的内容放到了 <code>query</code>里，再把<code>rows</code> 解构出来</p>
+<p>修改成 <code>Promise</code> 后如下图</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql2 = <span class="built_in">require</span>(<span class="string">&quot;mysql2&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connection = mysql2.<span class="title function_">createConnection</span>(&#123;</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  <span class="attr">user</span>: <span class="string">&quot;root&quot;</span>,</span><br><span class="line">  <span class="attr">password</span>: <span class="string">&quot;123&quot;</span>,</span><br><span class="line">  <span class="attr">database</span>: <span class="string">&quot;js04&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [rows, fields] = <span class="keyword">await</span> connection</span><br><span class="line">    .<span class="title function_">promise</span>()</span><br><span class="line">    .<span class="title function_">query</span>(<span class="string">&quot;SELECT * FROM users&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(rows);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210622170531566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h3><p>为什么可以这样找出 <code>rows</code> 呢，这里其实是数组的解构，相当于我们把数组的第 0 项拿出来，并赋值给 <code>rows</code>，所以这里的<code>rows</code>起什么名字都可以哦</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [rows] = <span class="keyword">await</span> connection</span><br><span class="line">  .<span class="title function_">promise</span>()</span><br><span class="line">  .<span class="title function_">query</span>(<span class="string">`SELECT * FROM news LIMIT ?,?`</span>, [(p - <span class="number">1</span>) * perPage, perPage]);</span><br><span class="line"><span class="keyword">return</span> rows;</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断查询是否成功"><a href="#判断查询是否成功" class="headerlink" title="判断查询是否成功"></a>判断查询是否成功</h3><p>如何查看插入成功了呢？看：<code>affectedRows: 1</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20210622172516972.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="忘记数据库密码（windows）"><a href="#忘记数据库密码（windows）" class="headerlink" title="忘记数据库密码（windows）"></a>忘记数据库密码（windows）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">C</span>:\<span class="title class_">Users</span>\<span class="number">10074</span>&gt;mysql</span><br><span class="line"><span class="variable constant_">ERROR</span> <span class="number">1045</span> (<span class="number">28000</span>): <span class="title class_">Access</span> denied <span class="keyword">for</span> user <span class="string">&#x27;ODBC&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> (using <span class="attr">password</span>: <span class="variable constant_">NO</span>)</span><br></pre></td></tr></table></figure>
+
+<p>报这个鸟错误啊，重新修改密码</p>
+<ul>
+<li>在 url 中输入 <code>%ProgramData%</code> 找到路径</li>
+</ul>
+<p>改着改着密码想起来了，淦</p>
+<h3 id="删除-service"><a href="#删除-service" class="headerlink" title="删除 service"></a>删除 service</h3><p>建数据库的时候，有个服务名字重复了，对就是 mysql57，</p>
+<ul>
+<li>进入<strong>管理员权限</strong>的 cmd ，然后 <code>sc delete 服务名</code>，如果有通知你删除成功，那么就 ok 了，<strong>重启</strong>之后进入服务就删掉了。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangzhongqing.fun">Lovely Ruby</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangzhongqing.fun/p/118091334.html">https://wangzhongqing.fun/p/118091334.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangzhongqing.fun" target="_blank">Rubyのいえ</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Javascript-%E7%AC%94%E8%AE%B0/">Javascript 笔记</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/p/118147928.html" title="【前端40_ MVC】项目规划、路由拆分、控制拆分、文件上传"><img class="cover" src="https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【前端40_ MVC】项目规划、路由拆分、控制拆分、文件上传</div></div></a></div><div class="next-post pull-right"><a href="/p/117924357.html" title="【前端38_模板引擎】pug、nunjunks"><img class="cover" src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【前端38_模板引擎】pug、nunjunks</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/p/124399493.html" title="【前端61_React】脚手架"><img class="cover" src="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-25</div><div class="title">【前端61_React】脚手架</div></div></a></div><div><a href="/p/124293884.html" title="【前端60_React】组件声明周期旧 &amp; 新、对于 UNSAFE 的理解、验证 Diff 算法、key 的作用"><img class="cover" src="https://i.loli.net/2020/02/20/4U8aZp7gyieQAmH.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-20</div><div class="title">【前端60_React】组件声明周期旧 &amp; 新、对于 UNSAFE 的理解、验证 Diff 算法、key 的作用</div></div></a></div><div><a href="/p/124229264.html" title="【前端59_react】组件分类、state、props、refs、事件处理、非受控组件 &amp; 受控组件、高阶函数、函数柯里化、以及 onChange 回调不用柯里化的写法"><img class="cover" src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-17</div><div class="title">【前端59_react】组件分类、state、props、refs、事件处理、非受控组件 &amp; 受控组件、高阶函数、函数柯里化、以及 onChange 回调不用柯里化的写法</div></div></a></div><div><a href="/p/124077173.html" title="【前端58_React】Hello-React、JSX、插件"><img class="cover" src="https://i.loli.net/2020/03/21/SrMgZaBlf4b6iAG.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">【前端58_React】Hello-React、JSX、插件</div></div></a></div><div><a href="/p/123557053.html" title="【前端57_Angular】自学"><img class="cover" src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-18</div><div class="title">【前端57_Angular】自学</div></div></a></div><div><a href="/p/123494279.html" title="【前端56_Vue 3】 自学"><img class="cover" src="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-15</div><div class="title">【前端56_Vue 3】 自学</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lovely Ruby</div><div class="author-info__description">开开心心每一天！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Lovely-Ruby"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Lovely-Ruby" target="_blank" title=""><i class="fab fa-git"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank" title=""><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://m.weibo.cn/profile/2847822941" target="_blank" title=""><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/Amethyst_Ruby_" target="_blank" title=""><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://www.pixiv.net/users/18912544" target="_blank" title=""><i class="fab fa-product-hunt"></i></a><a class="social-icon" href="https://blog.csdn.net/u010263423" target="_blank" title=""><i class="fab fa-codiepie"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小窝！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要用数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">建立表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%EF%BC%9AINSERT-INTO"><span class="toc-number">2.2.</span> <span class="toc-text">增：INSERT INTO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%EF%BC%9ADELETE-FROM"><span class="toc-number">2.3.</span> <span class="toc-text">删：DELETE FROM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%EF%BC%9AUPDATE"><span class="toc-number">2.4.</span> <span class="toc-text">改：UPDATE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%EF%BC%9ASELECT-FROM"><span class="toc-number">2.5.</span> <span class="toc-text">查：SELECT FROM *</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%BB%86%E5%88%86"><span class="toc-number">3.</span> <span class="toc-text">查询细分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.1.</span> <span class="toc-text">条件查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%EF%BC%9ALIKE"><span class="toc-number">3.2.</span> <span class="toc-text">模糊查询：LIKE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%9AJOIN-ON"><span class="toc-number">3.3.</span> <span class="toc-text">联表查询：JOIN ON</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-%E4%B8%AD%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">Node 中链接数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%86%99%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">基本写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-%E5%86%99%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">Promise 写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%A7%A3%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">数组解构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%9F%A5%E8%AF%A2%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="toc-number">4.4.</span> <span class="toc-text">判断查询是否成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%98%E8%AE%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81%EF%BC%88windows%EF%BC%89"><span class="toc-number">4.5.</span> <span class="toc-text">忘记数据库密码（windows）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-service"><span class="toc-number">4.6.</span> <span class="toc-text">删除 service</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/p/b707920b.html" title="记录升级 hexo 和博客主题遇到的那些事儿"><img src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录升级 hexo 和博客主题遇到的那些事儿"/></a><div class="content"><a class="title" href="/p/b707920b.html" title="记录升级 hexo 和博客主题遇到的那些事儿">记录升级 hexo 和博客主题遇到的那些事儿</a><time datetime="2024-02-10T14:28:59.000Z" title="发表于 2024-02-10 22:28:59">2024-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/45929.html" title="建立商城简单后台的过程"><img src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建立商城简单后台的过程"/></a><div class="content"><a class="title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</a><time datetime="2024-02-08T10:26:45.226Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/48116.html" title="批量更改文件名"><img src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="批量更改文件名"/></a><div class="content"><a class="title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</a><time datetime="2024-02-08T10:26:45.226Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f5c79a82.html" title="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记"><img src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记"/></a><div class="content"><a class="title" href="/p/f5c79a82.html" title="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记">【送 Girl Friend 的小工具】小程序 + 公众号开发笔记</a><time datetime="2024-02-08T10:26:45.224Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/27114.html" title="【项目】手持弹幕"><img src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】手持弹幕"/></a><div class="content"><a class="title" href="/p/27114.html" title="【项目】手持弹幕">【项目】手持弹幕</a><time datetime="2024-02-08T10:26:45.224Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lovely Ruby</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"><span>备案号：黑ICP备2022000599号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'YA3OUHq0zOUVCQ7gOb6Grskp-gzGzoHsz',
+      appKey: 'Aw8hEfP0teTOD7rji7Ye4gAO',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="/js/cursor-effects.js"></script><script src="/js/fish.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

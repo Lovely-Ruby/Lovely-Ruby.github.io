@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>前端 Node 项目迁徙为桌面 Electron 应用笔记 | Rubyのいえ</title><meta name="author" content="Lovely Ruby,1007420679@qq.com"><meta name="copyright" content="Lovely Ruby"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 起因我的服务器到期了，服务器上有几个服务，人家问这几个网站怎么不好使了，奈何服务器续费太贵租不起了… 但是服务还是要提供的，所以我在想如何把 node 的项目变成桌面端应用，于是有了这个笔记 效果展示页面没啥变化，就是把 node 打包成 exe 应用了   技术选型我是前端出身，这里偏向使用 js 去开发桌面端，想要短期解决客户的需求嘛，这里有几个技术选择:  Electron  Ta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端 Node 项目迁徙为桌面 Electron 应用笔记">
+<meta property="og:url" content="https://wangzhongqing.fun/p/135337783.html">
+<meta property="og:site_name" content="Rubyのいえ">
+<meta property="og:description" content="# 起因我的服务器到期了，服务器上有几个服务，人家问这几个网站怎么不好使了，奈何服务器续费太贵租不起了… 但是服务还是要提供的，所以我在想如何把 node 的项目变成桌面端应用，于是有了这个笔记 效果展示页面没啥变化，就是把 node 打包成 exe 应用了   技术选型我是前端出身，这里偏向使用 js 去开发桌面端，想要短期解决客户的需求嘛，这里有几个技术选择:  Electron  Ta">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg">
+<meta property="article:published_time" content="2024-01-10T13:28:04.000Z">
+<meta property="article:modified_time" content="2024-02-22T06:54:03.629Z">
+<meta property="article:author" content="Lovely Ruby">
+<meta property="article:tag" content="精讲">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png"><link rel="canonical" href="https://wangzhongqing.fun/p/135337783.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端 Node 项目迁徙为桌面 Electron 应用笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-22 14:54:03'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/font/font.css"><script src="/js/jquery-3.7.1.min.js"></script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-flask"></i><span> 实验室</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/fireworks/"><i class="fa-fw fas fa-tint"></i><span> 液体特效</span></a></li><li><a class="site-page child" href="/mikutap/"><i class="fa-fw fas fa-headphones-alt"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/dot/"><i class="fa-fw fas fa-braille"></i><span> Shape-shifter</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-user"></i><span> 站长</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Rubyのいえ"><span class="site-name">Rubyのいえ</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-flask"></i><span> 实验室</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/fireworks/"><i class="fa-fw fas fa-tint"></i><span> 液体特效</span></a></li><li><a class="site-page child" href="/mikutap/"><i class="fa-fw fas fa-headphones-alt"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/dot/"><i class="fa-fw fas fa-braille"></i><span> Shape-shifter</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-user"></i><span> 站长</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端 Node 项目迁徙为桌面 Electron 应用笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-10T13:28:04.000Z" title="发表于 2024-01-10 21:28:04">2024-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-22T06:54:03.629Z" title="更新于 2024-02-22 14:54:03">2024-02-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端 Node 项目迁徙为桌面 Electron 应用笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+
+<p>﻿# 起因<br>我的服务器到期了，服务器上有几个服务，人家问这几个网站怎么不好使了，奈何服务器续费太贵租不起了…</p>
+<p>但是服务还是要提供的，所以我在想如何把 <code>node</code> 的项目变成桌面端应用，于是有了这个笔记</p>
+<h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><p>页面没啥变化，就是把 <code>node</code> 打包成 <code>exe</code> 应用了</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/17db126d5632439b9573739c34649242.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><p>我是前端出身，这里偏向使用 <code>js</code> 去开发桌面端，想要短期解决客户的需求嘛，这里有几个技术选择:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/">Electron</a> </li>
+<li><a target="_blank" rel="noopener" href="https://tauri.app/zh-cn/">Tauri</a></li>
+<li><a target="_blank" rel="noopener" href="https://wails.io/zh-Hans/">Wails</a></li>
+</ul>
+<p>大致浏览了一下，这里选择使用 <code>Electron</code>，纯粹是官方说明第一眼看的比较顺，而且看论坛里关于它的讨论还挺多的，遇到问题估计能查到。</p>
+<hr>
+<h1 id="简单了解-Electron"><a href="#简单了解-Electron" class="headerlink" title="简单了解 Electron"></a>简单了解 Electron</h1><p>类似浏览器套壳子，大概的组成如下图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/f5558c05d528442092b57cae1a762404.png" alt="请添加图片描述"></p>
+<h1 id="准备步骤：安装-Electron"><a href="#准备步骤：安装-Electron" class="headerlink" title="准备步骤：安装 Electron"></a>准备步骤：安装 Electron</h1><p>首先把前端的整个项目复制一份，我们在复制的这份处理，然后打开 <code>package.json</code>，精简一下包内容（我是把 <code>koa</code> 都删掉了）</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/f7b89ee2d29e45f2b8df0380f11264d4.png" alt="在这里插入图片描述"></p>
+<p>接着安装脚手架，（这里我是直接安装的 <code>@electron-forge/cli</code>, 方便以后打包，当然你也可以按照官方的直接安装 <code>electron</code>）<a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/tutorial/%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B">官方的安装文档点我跳转！</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev @electron-forge/cli</span><br><span class="line">npx electron-forge import</span><br></pre></td></tr></table></figure>
+
+<p>安装  <code>yarn add --dev @electron-forge/cli</code>后如下图，<code>devDependencies</code> 字段添加了新的内容</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/40f56837ce2d4f269f7cb8c4f8845215.png" alt="在这里插入图片描述"></p>
+<p> <code>npx electron-forge import</code>后 <code>package.json</code> 里的样子如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/c85d87bc47004d74a6f6a2e8fd55165e.png" alt="在这里插入图片描述"></p>
+<p>运行完 <code>npx electron-forge import</code> 之后</p>
+<ul>
+<li>你的 <code>package.json</code> 会自动修改，添加了一些脚本和依赖</li>
+<li>自动生成了<code>forge.config.js</code> 文件</li>
+<li><code>.gitignore</code> 文件会帮我们添加一行 <code>out/</code></li>
+</ul>
+<p>之后就可以通过 <code>yarn start</code> 启动了！</p>
+<h1 id="开始：通过-Electron-打开页面！"><a href="#开始：通过-Electron-打开页面！" class="headerlink" title="开始：通过 Electron 打开页面！"></a>开始：通过 Electron 打开页面！</h1><p>我们打开 <code>package.json</code>，把 <code>main</code>  字段设置成  <code>main.js</code>（只是跟官网设置成一样，这里也可以不改，不过也要注意一下：<code>electron</code> 的主线程就是根据这个 <code>main</code> 字段声明的<code>.js</code>，所以我这里改一下~）</p>
+<p>这里的迁徙过程其实有两个选项：</p>
+<ul>
+<li>新建：新建一个 <code>main.js</code>，当作  <code>Electron</code> 的主线程</li>
+<li>改造：在原有的 <code>node</code> 启动文件  <code>index.js</code> 里修改</li>
+</ul>
+<p>先看一下怎么改的吧，工作量不大，大家根据自己的项目去思考怎么迁徙比较方便，这里为了逻辑清晰，我选择新建一个 <code>main.js</code><br>（对于我的项目，之前 node 的接口之类的代码都不适用了…）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;node:path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// explain: To handle the most common commands, such as managing desktop shortcuts, just add the following to the top of your main.js and you&#x27;re good to go:</span></span><br><span class="line"><span class="comment">// [electron-squirrel-startup](https://github.com/mongodb-js/electron-squirrel-startup)</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">require</span>(<span class="string">&#x27;electron-squirrel-startup&#x27;</span>)) app.<span class="title function_">quit</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createWindow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 声明应用的初始化窗口尺寸</span></span><br><span class="line">  <span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">1280</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">960</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 声明应用的主页面</span></span><br><span class="line">  mainWindow.<span class="title function_">loadFile</span>(path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;/static/index.html&#x27;</span>));</span><br><span class="line">  <span class="comment">// mainWindow.webContents.openDevTools(); // 打开开发者工具</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用准备完成之后创建窗口</span></span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">createWindow</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这段代码有了之后就可以直接运行起来看看了~我们 <code>yarn start</code> 构建一下，构建成功后会自动弹出窗口</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/bea53bcec54d4ed4a7fa27df06c3f9c3.png" alt="在这里插入图片描述"></p>
+<p>至此总算有点意思了对吧，我们接下来处理一下数据。</p>
+<h1 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h1><p><code>Electron</code> 里的数据传递不像前后端那样，前端带着数据请求后端接口，而是<strong>渲染线程向主线程数据传递</strong>，我们可以在官方中的<a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/tutorial/process-model">流程模型</a>介绍中深入理解这两个线程的具体作用，这里是<a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/tutorial/ipc">进程间通信</a>的实战。·</p>
+<p>参考官方文档：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/tutorial/process-model">流程模型</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/tutorial/ipc">进程间通信</a></li>
+</ul>
+<p>我们先写个小 <code>demo</code> 来体验一下数据的传递</p>
+<blockquote>
+<p>提示：之后的开发可能会经常用到控制台，所以我们在主进程中取消注释这句话 <code>mainWindow.webContents.openDevTools(); // 打开开发者工具</code>，方便我们调试</p>
+</blockquote>
+<p>这里先新建 <code>preload.js</code>，注册事件，至于为什么新建这个文件，请查看进程间通信的官方文档（概括一下是为了安全）</p>
+<p>然后我直接复制一下官方给的例子吧：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// preload.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; contextBridge, ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron/renderer&#x27;</span>);</span><br><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&#x27;electronAPI&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">setTitle</span>: <span class="function">(<span class="params">title</span>) =&gt;</span> ipcRenderer.<span class="title function_">send</span>(<span class="string">&#x27;set-title&#x27;</span>, title),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>接着，在 <code>main.js</code> 中将 <code>preload.js</code> 注册到页面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">webPreferences</span>: &#123;</span><br><span class="line">  <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;preload.js&#x27;</span>),</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/direct/c42cd1e08e90437e9aa7f9426aa4760f.png" alt="在这里插入图片描述"></p>
+<p>之后，构建一下，在页面中打印</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/b910cdf770c9441f9246c0cf09aad455.png" alt="在这里插入图片描述"></p>
+<p>可以看到，<code>preload.js</code> 里注册的 <code>electronAPI</code> 会挂载到前端的 <code>window</code> 变量上，我们通过注册的这些方法传递值</p>
+<h2 id="前端（渲染进程）-主进程"><a href="#前端（渲染进程）-主进程" class="headerlink" title="前端（渲染进程）&#x3D;&#x3D;&#x3D;&gt;   主进程"></a>前端（渲染进程）&#x3D;&#x3D;&#x3D;&gt;   主进程</h2><p>下面这张图是数据的传递过程</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/89fb8f39670047d5b104353960860453.png" alt="在这里插入图片描述"></p>
+<p>可以发发现，终端是乱码哎，我们可以这样做，在 <code>package.json</code> 的脚本的 <code>start 字段</code> 里添加 <code>chcp 65001 &amp;&amp;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;start&quot;</span>: <span class="string">&quot;chcp 65001 &amp;&amp; electron-forge start&quot;</span>,</span><br></pre></td></tr></table></figure>
+
+<p>演示效果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/2ddf37d0e86d45c2aef1765a901a3ca5.png" alt="在这里插入图片描述"><br>ok，终端也好了~</p>
+<p>主线程和 <code>preload.js</code> 的代码如下，前端看场景可以自己写一下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span>, ipcMain &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;node:path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// explain: To handle the most common commands, such as managing desktop shortcuts</span></span><br><span class="line"><span class="comment">// just add the following to the top of your main.js and you&#x27;re good to go:</span></span><br><span class="line"><span class="comment">// [electron-squirrel-startup](https://github.com/mongodb-js/electron-squirrel-startup)</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">require</span>(<span class="string">&#x27;electron-squirrel-startup&#x27;</span>)) app.<span class="title function_">quit</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createWindow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 声明应用的初始化窗口尺寸</span></span><br><span class="line">  <span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">1280</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">960</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">      <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;preload.js&#x27;</span>),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 声明应用的主页面</span></span><br><span class="line">  mainWindow.<span class="title function_">loadFile</span>(path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;/static/index.html&#x27;</span>));</span><br><span class="line">  mainWindow.<span class="property">webContents</span>.<span class="title function_">openDevTools</span>(); <span class="comment">// 打开开发者工具</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleUploadFile</span>(<span class="params">event, arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;主线程 ipcMain.on 监听的 event:&gt;&gt;&#x27;</span>, event);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;主线程 ipcMain.on 监听的 arg:&gt;&gt;&#x27;</span>, arg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用准备完成之后创建窗口</span></span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">createWindow</span>();</span><br><span class="line">  ipcMain.<span class="title function_">on</span>(<span class="string">&#x27;file:upload&#x27;</span>, handleUploadFile);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// preload.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; contextBridge, ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron/renderer&#x27;</span>);</span><br><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&#x27;electronAPI&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">uploadFile</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> ipcRenderer.<span class="title function_">send</span>(<span class="string">&#x27;file:upload&#x27;</span>, e),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前端 render.js</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">electronAPI</span>.<span class="title function_">uploadFile</span>(&#123;</span><br><span class="line">  <span class="attr">message</span>: <span class="string">&#x27;渲染进程 window.electronAPI 传递的值&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: <span class="string">&#x27;我是发送的数据&#x27;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我们接着研究主线程如何传递数据给前端。</p>
+<h2 id="主进程-前端（渲染进程）"><a href="#主进程-前端（渲染进程）" class="headerlink" title="主进程 &#x3D;&#x3D;&#x3D;&gt; 前端（渲染进程）"></a>主进程 &#x3D;&#x3D;&#x3D;&gt; 前端（渲染进程）</h2><p>想说的都在图片里了！</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/0a01c892a2ca40b5ba9e810e17ce6dcc.png" alt="在这里插入图片描述"></p>
+<p>部分代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line">mainWindow.<span class="property">webContents</span>.<span class="title function_">send</span>(<span class="string">&#x27;word-data&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">code</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">message</span>: <span class="string">&#x27;我是主线程发送给前端的数据&#x27;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// preload.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; contextBridge, ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron/renderer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&#x27;electronAPI&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">uploadFile</span>: <span class="function">(<span class="params">e</span>) =&gt;</span> ipcRenderer.<span class="title function_">send</span>(<span class="string">&#x27;file:upload&#x27;</span>, e),</span><br><span class="line">  <span class="attr">onReceiveData</span>: <span class="function">(<span class="params">callback</span>) =&gt;</span> ipcRenderer.<span class="title function_">on</span>(<span class="string">&#x27;word-data&#x27;</span>, <span class="function">(<span class="params">_event, value</span>) =&gt;</span> <span class="title function_">callback</span>(value)),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前端</span></span><br><span class="line"><span class="title function_">beforeMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">electronAPI</span>.<span class="title function_">onReceiveData</span>(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;前端 onReceiveData 的 value 值:&gt;&gt;&#x27;</span>, value);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据传递的总结"><a href="#数据传递的总结" class="headerlink" title="数据传递的总结"></a>数据传递的总结</h1><p>先整理一下这个 <code>preload.js</code> 的作用</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/c272839c1f1c421686e0bb6be83a86d7.png" alt="在这里插入图片描述"></p>
+<p>然后就是一组通信的整理</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前端：发送</td>
+<td><code>window.electronAPI.AAA(data)</code></td>
+</tr>
+<tr>
+<td>后端：接收</td>
+<td><code>window.electronAPI.BBB((value) =&gt; &#123;&#125;)</code></td>
+</tr>
+<tr>
+<td>后端：发送</td>
+<td><code>mainWindow.webContents.send(&#39;CCC&#39;, data)</code></td>
+</tr>
+<tr>
+<td>前端：接收</td>
+<td><code>ipcMain.on(&#39;DDD&#39;, fn)</code></td>
+</tr>
+</tbody></table>
+<p>具体函数名看下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/ffadb89b7c604c588886ba852e61a013.png" alt="请添加图片描述"></p>
+<p>以上，算是比较清晰的整理一便，几乎可以做一些小玩具了，还有就是打包的问题，当然坑也是千奇百怪，遇到就自行搜索引擎吧，下面列一下我遇到的问题。</p>
+<h1 id="Q-A"><a href="#Q-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h1><h2 id="项目中遇到的坑：开发环境和生产环境的-dirname-值不一样"><a href="#项目中遇到的坑：开发环境和生产环境的-dirname-值不一样" class="headerlink" title="项目中遇到的坑：开发环境和生产环境的 __dirname 值不一样"></a>项目中遇到的坑：开发环境和生产环境的 __dirname 值不一样</h2><p>我的项目里有个输出文件的问题，输出文件的路径用到了<code>__dirname</code> </p>
+<p>开发的时候都还好，打包之后功能就不对了，后来打印发现  <code>__dirname</code> 不同，因为打包后的源代码在 <code>app.asar</code> 里</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/b0daefdd6d764c2193b6a7787f5671ae.png" alt="请添加图片描述"></p>
+<p>于是我参考了这篇文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/makalochen/p/14482580.html">关于electron的开发应用路径和生产路径的问题 </a></p>
+<h2 id="asar-是什么"><a href="#asar-是什么" class="headerlink" title="asar 是什么"></a>asar 是什么</h2><p>参考这篇博文：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7213171235577036860">详解 Electron 中的 asar 文件</a> </p>
+<h2 id="终端中文不显示，或者显示乱码"><a href="#终端中文不显示，或者显示乱码" class="headerlink" title="终端中文不显示，或者显示乱码"></a>终端中文不显示，或者显示乱码</h2><p>运行的时候添加 <code>chcp 65001</code>，可以在 package.json 中写好脚本 </p>
+<p><img src="https://img-blog.csdnimg.cn/direct/f526010709ac417d917dfe6b5bf33b2e.png" alt="在这里插入图片描述"><br>具体参考这篇博文: <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52233414/article/details/133382312">解决vscode终端乱码问题【疑难杂症，使用chcp命令修改活动代码页无效的解决方法】</a></p>
+<h2 id="安装：安装-Electron-坎坷"><a href="#安装：安装-Electron-坎坷" class="headerlink" title="安装：安装 Electron 坎坷"></a>安装：安装 Electron 坎坷</h2><p> 核心的问题还是国内防火墙给墙住了，所以可以切换你包管理器的地址，更换成淘宝源的，我当时也按了一上午，很烦闷</p>
+<p> 这里推荐使用 <code>yarn</code> 安装，或者用 <code>pnpm</code> 也可以</p>
+<p><a target="_blank" rel="noopener" href="https://www.electronjs.org/zh/docs/latest/tutorial/installation#%E9%95%9C%E5%83%8F">官网的安装指南</a></p>
+<h2 id="打包：遇到-Making-for-target-squirrel-On-platform-win32-For-arch-x64错误"><a href="#打包：遇到-Making-for-target-squirrel-On-platform-win32-For-arch-x64错误" class="headerlink" title="打包：遇到 Making for target: squirrel - On platform: win32 - For arch: x64错误"></a>打包：遇到 Making for target: squirrel - On platform: win32 - For arch: x64错误</h2><p>这是打包的倒数第二个环节，这里出现问题我觉得影响不大，因为当前路径下应该有 out 的打包文件夹了，不过看着闹心的话，要具体看看控制器报的什么错误，那谷歌翻译一下那个依赖包出的错误。</p>
+<h2 id="打包：打包失败问题推断"><a href="#打包：打包失败问题推断" class="headerlink" title="打包：打包失败问题推断"></a>打包：打包失败问题推断</h2><p>这里推荐官网的 demo 打包测试一下，跟你自己的项目做个对照，而且 electron 的打包有好几个选择的，官网上推荐用 <code>Electron Forge</code>，其实还有 <code>Electron Packager</code> 等等，可以参考一下这篇文章了解一下：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7250085815430430781">详解 Electron 打包</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.electronforge.io/">这是 Electron Forge 官网</a>，其中有小型的 <code>demo</code>，你把它克隆下来然后启动并打包一下，如果可以打包成功的话，参考一下自己的项目里缺了什么。</p>
+<p>可能缺少的选项有</p>
+<ul>
+<li>package.json 的打包配置，具体看官网这篇文档 <code>https://www.electronforge.io/import-existing-project#configuring-package.json</code>（如果你是用cli 构建的项目，它会另外写一个<code>forge.config.js</code> 文件用于配置打包项，然而我的是已存在的项目，所以直接写在 <code>package.json</code> 里比较方便）<br><img src="https://img-blog.csdnimg.cn/direct/9b62ee56e385488eb6c48c5f2b8c7d2a.png" alt="在这里插入图片描述"></li>
+<li>cmd 管理员权限：最好用 管理员终端去打包，有些权限比较高，普通的终端可能没有权限</li>
+<li>一些依赖无法正确安装：推荐更换包管理器的下载源，具体可以看这篇文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010263423/article/details/113806219?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170417076416800182775150%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=170417076416800182775150&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-2-113806219-null-null.nonecase&utm_term=npm&spm=1018.2226.3001.4450">更换 npm 依赖下载源</a></li>
+</ul>
+<h2 id="打包报错：An-unhandled-rejection-has-occurred-inside-Forge"><a href="#打包报错：An-unhandled-rejection-has-occurred-inside-Forge" class="headerlink" title="打包报错：An unhandled rejection has occurred inside Forge:"></a>打包报错：An unhandled rejection has occurred inside Forge:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: EPERM: operation not permitted, symlink </span><br><span class="line"><span class="string">&#x27;E:\Project_Front\electron-example\node_modules\.pnpm\electron-squirrel-startup@1.0.0\node_modules\electron-squirrel-startup&#x27;</span></span><br><span class="line">-&gt; </span><br><span class="line"><span class="string">&#x27;C:\Users\Wang\AppData\Local\Temp\electron-packager\tmp-UVFKGa\resources\app\node_modules\electron-squirrel-startup&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里可能出现的愿意就是依赖没找到，首先检查一下 <code>package.json</code> 中的依赖都对不对，然后把 <code>node_module</code> 文件夹删掉，用 yarn 重新安装一下。</p>
+<h2 id="打包图标报错"><a href="#打包图标报错" class="headerlink" title="打包图标报错"></a>打包图标报错</h2><p>参考这个博客：<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000021004246">electron-forge打包如何自定义应用图标和安装动画</a></p>
+<p>图标尺寸一定要大一点，不然生成的安装包会默认显示 <code>electron</code> 的图标，或者尝试清理 <code>windows</code> 的图标缓存，具体操作看下面</p>
+<h2 id="windows清理图标"><a href="#windows清理图标" class="headerlink" title="windows清理图标"></a>windows清理图标</h2><p>将下面的文字放到笔记本里，然后保存，更改文件类型为 <code>bat</code> 并双击运行。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">rem 关闭 Windows 外壳程序 Explorer</span></span><br><span class="line"><span class="built_in">taskkill</span> /f /im explorer.exe</span><br><span class="line"><span class="comment">rem 清理系统图标缓存数据库</span></span><br><span class="line"><span class="built_in">attrib</span> -h -s -r &quot;<span class="variable">%userprofile%</span>\AppData\Local\IconCache.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\IconCache.db&quot;</span><br><span class="line"><span class="built_in">attrib</span> /s /d -h -s -r &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\*&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_32.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_96.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_102.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_256.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_1024.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_idx.db&quot;</span><br><span class="line"><span class="built_in">del</span> /f &quot;<span class="variable">%userprofile%</span>\AppData\Local\Microsoft\Windows\Explorer\thumbcache_sr.db&quot;</span><br><span class="line"><span class="comment">rem 清理系统托盘记忆的图标</span></span><br><span class="line"><span class="built_in">echo</span> y　reg delete &quot;HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify&quot; /v IconStreams</span><br><span class="line"><span class="built_in">echo</span> y　reg delete &quot;HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify&quot; /v PastIconsStream</span><br><span class="line"><span class="comment">rem 重启 Windows 外壳程序 Explorer</span></span><br><span class="line"><span class="built_in">start</span> explorer</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangzhongqing.fun">Lovely Ruby</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangzhongqing.fun/p/135337783.html">https://wangzhongqing.fun/p/135337783.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangzhongqing.fun" target="_blank">Rubyのいえ</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B2%BE%E8%AE%B2/">精讲</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/p/136046077.html" title="Tauri 的基本使用笔记"><img class="cover" src="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Tauri 的基本使用笔记</div></div></a></div><div class="next-post pull-right"><a href="/p/134855011.html" title="【文件上传系列】No.3 断点续传（原生前端 + Node 后端）"><img class="cover" src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【文件上传系列】No.3 断点续传（原生前端 + Node 后端）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/p/d3a0134f.html" title="JavaScript的原型，原型链到底是什么！看完这篇绝对会有感悟"><img class="cover" src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-08</div><div class="title">JavaScript的原型，原型链到底是什么！看完这篇绝对会有感悟</div></div></a></div><div><a href="/p/136046077.html" title="Tauri 的基本使用笔记"><img class="cover" src="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-06</div><div class="title">Tauri 的基本使用笔记</div></div></a></div><div><a href="/p/134855011.html" title="【文件上传系列】No.3 断点续传（原生前端 + Node 后端）"><img class="cover" src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-11</div><div class="title">【文件上传系列】No.3 断点续传（原生前端 + Node 后端）</div></div></a></div><div><a href="/p/134760690.html" title="【文件上传系列】No.2 秒传（原生前端 + Node 后端）"><img class="cover" src="https://i.loli.net/2020/02/20/rOBRPg1ptDkuHoQ.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-06</div><div class="title">【文件上传系列】No.2 秒传（原生前端 + Node 后端）</div></div></a></div><div><a href="/p/134747037.html" title="【文件上传系列】No.1 大文件分片、进度图展示（原生前端 + Node 后端 &amp; Koa）"><img class="cover" src="https://i.loli.net/2020/02/20/3PzcKpZwuHoLhgq.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-02</div><div class="title">【文件上传系列】No.1 大文件分片、进度图展示（原生前端 + Node 后端 &amp; Koa）</div></div></a></div><div><a href="/p/134728858.html" title="【文件上传系列】No.0 利用 FormData 实现文件上传、监控网路速度和上传进度（原生前端，Koa 后端）"><img class="cover" src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-01</div><div class="title">【文件上传系列】No.0 利用 FormData 实现文件上传、监控网路速度和上传进度（原生前端，Koa 后端）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lovely Ruby</div><div class="author-info__description">开开心心每一天！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Lovely-Ruby"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Lovely-Ruby" target="_blank" title=""><i class="fab fa-git"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank" title=""><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://m.weibo.cn/profile/2847822941" target="_blank" title=""><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/Amethyst_Ruby_" target="_blank" title=""><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://www.pixiv.net/users/18912544" target="_blank" title=""><i class="fab fa-product-hunt"></i></a><a class="social-icon" href="https://blog.csdn.net/u010263423" target="_blank" title=""><i class="fab fa-codiepie"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小窝！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">1.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">技术选型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3-Electron"><span class="toc-number">3.</span> <span class="toc-text">简单了解 Electron</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E6%AD%A5%E9%AA%A4%EF%BC%9A%E5%AE%89%E8%A3%85-Electron"><span class="toc-number">4.</span> <span class="toc-text">准备步骤：安装 Electron</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%EF%BC%9A%E9%80%9A%E8%BF%87-Electron-%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%EF%BC%81"><span class="toc-number">5.</span> <span class="toc-text">开始：通过 Electron 打开页面！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92"><span class="toc-number">6.</span> <span class="toc-text">数据传递</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%EF%BC%88%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%EF%BC%89-%E4%B8%BB%E8%BF%9B%E7%A8%8B"><span class="toc-number">6.1.</span> <span class="toc-text">前端（渲染进程）&#x3D;&#x3D;&#x3D;&gt;   主进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%BF%9B%E7%A8%8B-%E5%89%8D%E7%AB%AF%EF%BC%88%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">主进程 &#x3D;&#x3D;&#x3D;&gt; 前端（渲染进程）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">数据传递的总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-A"><span class="toc-number">8.</span> <span class="toc-text">Q &amp; A</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%9A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84-dirname-%E5%80%BC%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="toc-number">8.1.</span> <span class="toc-text">项目中遇到的坑：开发环境和生产环境的 __dirname 值不一样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#asar-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">8.2.</span> <span class="toc-text">asar 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%96%87%E4%B8%8D%E6%98%BE%E7%A4%BA%EF%BC%8C%E6%88%96%E8%80%85%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81"><span class="toc-number">8.3.</span> <span class="toc-text">终端中文不显示，或者显示乱码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%EF%BC%9A%E5%AE%89%E8%A3%85-Electron-%E5%9D%8E%E5%9D%B7"><span class="toc-number">8.4.</span> <span class="toc-text">安装：安装 Electron 坎坷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%EF%BC%9A%E9%81%87%E5%88%B0-Making-for-target-squirrel-On-platform-win32-For-arch-x64%E9%94%99%E8%AF%AF"><span class="toc-number">8.5.</span> <span class="toc-text">打包：遇到 Making for target: squirrel - On platform: win32 - For arch: x64错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%EF%BC%9A%E6%89%93%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E6%8E%A8%E6%96%AD"><span class="toc-number">8.6.</span> <span class="toc-text">打包：打包失败问题推断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99%EF%BC%9AAn-unhandled-rejection-has-occurred-inside-Forge"><span class="toc-number">8.7.</span> <span class="toc-text">打包报错：An unhandled rejection has occurred inside Forge:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E5%9B%BE%E6%A0%87%E6%8A%A5%E9%94%99"><span class="toc-number">8.8.</span> <span class="toc-text">打包图标报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows%E6%B8%85%E7%90%86%E5%9B%BE%E6%A0%87"><span class="toc-number">8.9.</span> <span class="toc-text">windows清理图标</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/p/b707920b.html" title="记录升级 hexo 和博客主题遇到的那些事儿"><img src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录升级 hexo 和博客主题遇到的那些事儿"/></a><div class="content"><a class="title" href="/p/b707920b.html" title="记录升级 hexo 和博客主题遇到的那些事儿">记录升级 hexo 和博客主题遇到的那些事儿</a><time datetime="2024-02-10T14:28:59.000Z" title="发表于 2024-02-10 22:28:59">2024-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/45929.html" title="建立商城简单后台的过程"><img src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建立商城简单后台的过程"/></a><div class="content"><a class="title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</a><time datetime="2024-02-08T10:26:45.226Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/48116.html" title="批量更改文件名"><img src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="批量更改文件名"/></a><div class="content"><a class="title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</a><time datetime="2024-02-08T10:26:45.226Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f5c79a82.html" title="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记"><img src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记"/></a><div class="content"><a class="title" href="/p/f5c79a82.html" title="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记">【送 Girl Friend 的小工具】小程序 + 公众号开发笔记</a><time datetime="2024-02-08T10:26:45.224Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/27114.html" title="【项目】手持弹幕"><img src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】手持弹幕"/></a><div class="content"><a class="title" href="/p/27114.html" title="【项目】手持弹幕">【项目】手持弹幕</a><time datetime="2024-02-08T10:26:45.224Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2020/02/20/AJB4SHpmD3Kd7QL.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lovely Ruby</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"><span>备案号：黑ICP备2022000599号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'YA3OUHq0zOUVCQ7gOb6Grskp-gzGzoHsz',
+      appKey: 'Aw8hEfP0teTOD7rji7Ye4gAO',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="/js/cursor-effects.js"></script><script src="/js/fish.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

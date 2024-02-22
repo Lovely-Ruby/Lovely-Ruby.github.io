@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【前端48_TypeScript】接口、高级类型、interface 与 type 的区别、类型推导、类型断言 | Rubyのいえ</title><meta name="author" content="Lovely Ruby,1007420679@qq.com"><meta name="copyright" content="Lovely Ruby"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="TypeScript接口 interface用来约束对象的结构 基本使用简单的使用方法如下 可选属性可选属性的声明，在变量后面用 ? 声明  只读属性如果想定义一个只读的变量，应该用 readonly 去声明 可变 &#x2F; 任意属性：对象属性的二次扩展希望对对象属性进行扩展的，因为我们也不知道对象以后会添加什么属性， 任意属性如下图所示，用 [] 声明，注意：这里的 key 只是一个临">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【前端48_TypeScript】接口、高级类型、interface 与 type 的区别、类型推导、类型断言">
+<meta property="og:url" content="https://wangzhongqing.fun/p/119762859.html">
+<meta property="og:site_name" content="Rubyのいえ">
+<meta property="og:description" content="TypeScript接口 interface用来约束对象的结构 基本使用简单的使用方法如下 可选属性可选属性的声明，在变量后面用 ? 声明  只读属性如果想定义一个只读的变量，应该用 readonly 去声明 可变 &#x2F; 任意属性：对象属性的二次扩展希望对对象属性进行扩展的，因为我们也不知道对象以后会添加什么属性， 任意属性如下图所示，用 [] 声明，注意：这里的 key 只是一个临">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg">
+<meta property="article:published_time" content="2021-08-17T10:07:35.000Z">
+<meta property="article:modified_time" content="2024-02-22T06:36:55.979Z">
+<meta property="article:author" content="Lovely Ruby">
+<meta property="article:tag" content="Javascript 笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png"><link rel="canonical" href="https://wangzhongqing.fun/p/119762859.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【前端48_TypeScript】接口、高级类型、interface 与 type 的区别、类型推导、类型断言',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-22 14:36:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/font/font.css"><script src="/js/jquery-3.7.1.min.js"></script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-flask"></i><span> 实验室</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/fireworks/"><i class="fa-fw fas fa-tint"></i><span> 液体特效</span></a></li><li><a class="site-page child" href="/mikutap/"><i class="fa-fw fas fa-headphones-alt"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/dot/"><i class="fa-fw fas fa-braille"></i><span> Shape-shifter</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-user"></i><span> 站长</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Rubyのいえ"><span class="site-name">Rubyのいえ</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-flask"></i><span> 实验室</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/fireworks/"><i class="fa-fw fas fa-tint"></i><span> 液体特效</span></a></li><li><a class="site-page child" href="/mikutap/"><i class="fa-fw fas fa-headphones-alt"></i><span> Mikutap</span></a></li><li><a class="site-page child" href="/dot/"><i class="fa-fw fas fa-braille"></i><span> Shape-shifter</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 后宫</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-user"></i><span> 站长</span></a></li><li><a class="site-page child" href="/log/"><i class="fa-fw fa fa-calendar"></i><span> 日志</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【前端48_TypeScript】接口、高级类型、interface 与 type 的区别、类型推导、类型断言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-17T10:07:35.000Z" title="发表于 2021-08-17 18:07:35">2021-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-22T06:36:55.979Z" title="更新于 2024-02-22 14:36:55">2024-02-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【前端48_TypeScript】接口、高级类型、interface 与 type 的区别、类型推导、类型断言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+
+<hr>
+<h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h2 id="接口-interface"><a href="#接口-interface" class="headerlink" title="接口 interface"></a>接口 interface</h2><p>用来<strong>约束</strong>对象的结构</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>简单的使用方法如下<br><img src="https://img-blog.csdnimg.cn/47b661409ff24be584545bc229fbbce4.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h3><p>可选属性的声明，在变量后面用 <code>?</code> 声明</p>
+<p><img src="https://img-blog.csdnimg.cn/da286678227c4cffb7dcbf0e3118f12b.png" alt="在这里插入图片描述"></p>
+<h3 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h3><p>如果想定义一个只读的变量，应该用 <code>readonly</code> 去声明<br><img src="https://img-blog.csdnimg.cn/7749bb6ba6c444aaa340c8978047523d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAyNjM0MjM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="可变-任意属性：对象属性的二次扩展"><a href="#可变-任意属性：对象属性的二次扩展" class="headerlink" title="可变 &#x2F; 任意属性：对象属性的二次扩展"></a>可变 &#x2F; 任意属性：对象属性的二次扩展</h3><p>希望对对象属性进行扩展的，因为我们也不知道对象以后会添加什么属性，</p>
+<p>任意属性如下图所示，用 <code>[]</code> 声明，注意：这里的 <code>key</code> 只是一个临时变量</p>
+<p><img src="https://img-blog.csdnimg.cn/88fdd910380945099dde5c774315e014.gif" alt="请添加图片描述"></p>
+<blockquote>
+<p>注意：索引签名参数类型必须为 <u>string</u> 或 <u>number</u> 之一，但两者可同时出现，也就是下面这个意思：</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/b78a3b84ccb54f3a83c25dd15d29a5a7.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>注意：当同时存在数字类型索引和字符串类型索引的时候，数字类型的值类型必须是字符串类型的值类型或子类型</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Point1</span> &#123;</span><br><span class="line">  [<span class="attr">prop1</span>: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">  [<span class="attr">prop2</span>: <span class="built_in">number</span>]: <span class="built_in">number</span>; <span class="comment">// 错误</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Point2</span> &#123;</span><br><span class="line">  [<span class="attr">prop1</span>: <span class="built_in">string</span>]: <span class="title class_">Object</span>;</span><br><span class="line">  [<span class="attr">prop2</span>: <span class="built_in">number</span>]: <span class="title class_">Date</span>; <span class="comment">// 正确</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来一个例子：<br><img src="https://img-blog.csdnimg.cn/b5c361a392374dac8ea384afb25ad3f6.gif" alt="请添加图片描述"></p>
+<h3 id="描述函数"><a href="#描述函数" class="headerlink" title="描述函数"></a>描述函数</h3><p>如果想写几个相同的函数</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么可以通过接口来描述函数</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// // 使用接口来描述函数</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">MyFunc</span> &#123;</span><br><span class="line">  (<span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span>): <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 根据描述来声明新的函数</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">fn3</span>: <span class="title class_">MyFunc</span> = <span class="keyword">function</span> (<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>再举一个例子</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义函数</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">MyFunc</span> &#123;</span><br><span class="line">  (<span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span>): <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// todu 形参传递一个回调函数，类型是 MyFunc</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">todo</span>(<span class="params">callback: MyFunc</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> v = <span class="title function_">callback</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="title function_">todo</span>(<span class="keyword">function</span> (<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>接着举例子</p>
+<p><img src="https://img-blog.csdnimg.cn/40b43ef5091948258a670c46067b7ad9.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="接口合并"><a href="#接口合并" class="headerlink" title="接口合并"></a>接口合并</h3><p>此情况适用于定义了相同名的接口，代码处理的逻辑如下。<br><img src="https://img-blog.csdnimg.cn/c9149f7a42434f819281d4b0d8f92c89.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<hr>
+<h2 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h2><h3 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h3><p><img src="https://img-blog.csdnimg.cn/f838dd8af14e40b6adce5bbb7d2b918f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h3><p>定义两个接口，<code>o1</code> 和 <code>o2</code> ，最后通过 <code>&amp;</code> 来合并两个接口为一个新的接口<br><img src="https://img-blog.csdnimg.cn/fccac9525e73407db764c98ff2362d1e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>这里的 <code>assign</code> 报红是因为 API 不会转换<br><img src="https://img-blog.csdnimg.cn/7760156ae6064642935b2ac64fd11125.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<blockquote>
+<p><code>TypeScript</code> 在编译过程中只会转换语法（比如扩展运算符，箭头函数等语法进行转换，对于 <code>API</code> 是不会进行转换的（也没必要转换，而是引入一些扩展库进行处理的），如果我们的代码中使用了 <code>target</code> 中没有的 <code>API</code> ，则需要手动进行引入，默认情况下 <code>TypeScript</code> 会根据 <code>target</code> 载入核心的类型库</p>
+<p><code>target</code> 为 <code>es5</code> 时: <code>[&quot;dom&quot;, &quot;es5&quot;, &quot;scripthost&quot;]</code><br><code>target</code> 为 <code>es6</code> 时: <code>[&quot;dom&quot;, &quot;es6&quot;, &quot;dom.iterable&quot;, &quot;scripthost&quot;]</code></p>
+<p>如果代码中使用了这些默认载入库以外的代码，则可以通过 <code>lib</code> 选项来进行设置</p>
+<p><a target="_blank" rel="noopener" href="http://www.typescriptlang.org/docs/handbook/compiler-options.html">http://www.typescriptlang.org/docs/handbook/compiler-options.html</a></p>
+</blockquote>
+<h3 id="自变量类型"><a href="#自变量类型" class="headerlink" title="自变量类型"></a>自变量类型</h3><p><img src="https://img-blog.csdnimg.cn/2582c36ff6994de9a1cc4d88ff259d94.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>有的时候类型标注比较复杂，这个时候我们可以类型标注起一个相对简单的名字<br><img src="https://img-blog.csdnimg.cn/aad9c9696d68469a99093b023d4af134.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>使用类型别名定义函数类型<br><img src="https://img-blog.csdnimg.cn/e82820642e35488e9e010fa48543bd67.png" alt="在这里插入图片描述"></p>
+<h2 id="interface-与-type-的区别"><a href="#interface-与-type-的区别" class="headerlink" title="interface 与 type 的区别"></a>interface 与 type 的区别</h2><p><strong>interface</strong></p>
+<ul>
+<li>只能描述 <code>object</code>&#x2F;<code>class</code>&#x2F;<code>function</code> 的类型</li>
+<li>同名 <code>interface</code> 自动合并，利于扩展</li>
+</ul>
+<p><strong>type</strong></p>
+<ul>
+<li>不能重名</li>
+<li>能描述所有数据</li>
+</ul>
+<hr>
+<h2 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h2><p>每次都显式标注类型会比较麻烦，<u>TypeScript</u> 提供了一种更加方便的特性：类型推导。<u>TypeScript</u> 编译器会根据当前上下文自动的推导出对应的类型标注，这个过程发生在：</p>
+<ul>
+<li>初始化变量</li>
+<li>设置函数默认参数值</li>
+<li>返回函数值</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/fa977556ede942b5b9e1df573a4476eb.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_18,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自动推断 x 为 number</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 不能将类型“&quot;a&quot;”分配给类型“number”</span></span><br><span class="line">x = <span class="string">&quot;a&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数参数类型、函数返回值会根据对应的默认值和返回值进行自动推断</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a = <span class="number">1</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a * a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h2><p>有的时候，我们可能标注一个更加精确的类型（缩小类型标注范围）</p>
+<p><u>img</u> 的类型为 <u>Element</u>，而 <u>Element</u> 类型其实只是元素类型的<strong>通用类型</strong>，如果我们去访问 <u>src</u> 这个属性是有问题的，我们需要把它的类型标注得更为精确：<u>HTMLImageElement</u> 类型，这个时候，我们就可以使用类型断言，它类似于一种 类型转换：</p>
+<p><img src="https://img-blog.csdnimg.cn/c8bd7e334a284e39bcf9d19722e1ca6f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATG92ZWx5IFJ1Ynk=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/dedd6b1af7c04e9d828674760072d4fc.png" alt="在这里插入图片描述"><br>或者</p>
+<p><img src="https://img-blog.csdnimg.cn/a17a3b58369047c995615cdbcbff4ecf.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>注意：断言只是一种<strong>预判</strong>，并不会数据本身产生实际的作用，即：类似转换，但并非真的转换了</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangzhongqing.fun">Lovely Ruby</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangzhongqing.fun/p/119762859.html">https://wangzhongqing.fun/p/119762859.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangzhongqing.fun" target="_blank">Rubyのいえ</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Javascript-%E7%AC%94%E8%AE%B0/">Javascript 笔记</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/p/119348607.html" title="【前端49_TypeScript】函数：函数标注、this、函数重载，面向对象编程"><img class="cover" src="https://i.loli.net/2020/02/20/3PzcKpZwuHoLhgq.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【前端49_TypeScript】函数：函数标注、this、函数重载，面向对象编程</div></div></a></div><div class="next-post pull-right"><a href="/p/119697602.html" title="【前端47_TypeScript】为什么要用 TypeScript、类型系统、源码地址"><img class="cover" src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【前端47_TypeScript】为什么要用 TypeScript、类型系统、源码地址</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/p/124399493.html" title="【前端61_React】脚手架"><img class="cover" src="https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-25</div><div class="title">【前端61_React】脚手架</div></div></a></div><div><a href="/p/124293884.html" title="【前端60_React】组件声明周期旧 &amp; 新、对于 UNSAFE 的理解、验证 Diff 算法、key 的作用"><img class="cover" src="https://i.loli.net/2020/02/20/4U8aZp7gyieQAmH.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-20</div><div class="title">【前端60_React】组件声明周期旧 &amp; 新、对于 UNSAFE 的理解、验证 Diff 算法、key 的作用</div></div></a></div><div><a href="/p/124229264.html" title="【前端59_react】组件分类、state、props、refs、事件处理、非受控组件 &amp; 受控组件、高阶函数、函数柯里化、以及 onChange 回调不用柯里化的写法"><img class="cover" src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-17</div><div class="title">【前端59_react】组件分类、state、props、refs、事件处理、非受控组件 &amp; 受控组件、高阶函数、函数柯里化、以及 onChange 回调不用柯里化的写法</div></div></a></div><div><a href="/p/124077173.html" title="【前端58_React】Hello-React、JSX、插件"><img class="cover" src="https://i.loli.net/2020/03/21/SrMgZaBlf4b6iAG.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">【前端58_React】Hello-React、JSX、插件</div></div></a></div><div><a href="/p/123557053.html" title="【前端57_Angular】自学"><img class="cover" src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-18</div><div class="title">【前端57_Angular】自学</div></div></a></div><div><a href="/p/123494279.html" title="【前端56_Vue 3】 自学"><img class="cover" src="https://i.loli.net/2020/02/20/26hkDFgRKjMWsAT.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-15</div><div class="title">【前端56_Vue 3】 自学</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/01/09/orN1U9C4DtTOexs.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lovely Ruby</div><div class="author-info__description">开开心心每一天！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Lovely-Ruby"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Lovely-Ruby" target="_blank" title=""><i class="fab fa-git"></i></a><a class="social-icon" href="mailto:1007420679@qq.com" target="_blank" title=""><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="fa fa-rss"></i></a><a class="social-icon" href="https://m.weibo.cn/profile/2847822941" target="_blank" title=""><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/Amethyst_Ruby_" target="_blank" title=""><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://www.pixiv.net/users/18912544" target="_blank" title=""><i class="fab fa-product-hunt"></i></a><a class="social-icon" href="https://blog.csdn.net/u010263423" target="_blank" title=""><i class="fab fa-codiepie"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的小窝！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript"><span class="toc-number">1.</span> <span class="toc-text">TypeScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3-interface"><span class="toc-number">1.1.</span> <span class="toc-text">接口 interface</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E4%BB%BB%E6%84%8F%E5%B1%9E%E6%80%A7%EF%BC%9A%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E4%BA%8C%E6%AC%A1%E6%89%A9%E5%B1%95"><span class="toc-number">1.1.4.</span> <span class="toc-text">可变 &#x2F; 任意属性：对象属性的二次扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.5.</span> <span class="toc-text">描述函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%90%88%E5%B9%B6"><span class="toc-number">1.1.6.</span> <span class="toc-text">接口合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">高级类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">联合类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">交叉类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">自变量类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D"><span class="toc-number">1.2.4.</span> <span class="toc-text">类型别名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#interface-%E4%B8%8E-type-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">interface 与 type 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.4.</span> <span class="toc-text">类型推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80"><span class="toc-number">1.5.</span> <span class="toc-text">类型断言</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/p/b707920b.html" title="记录升级 hexo 和博客主题遇到的那些事儿"><img src="https://i.loli.net/2020/02/20/PNT3cd9yjOSDikR.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录升级 hexo 和博客主题遇到的那些事儿"/></a><div class="content"><a class="title" href="/p/b707920b.html" title="记录升级 hexo 和博客主题遇到的那些事儿">记录升级 hexo 和博客主题遇到的那些事儿</a><time datetime="2024-02-10T14:28:59.000Z" title="发表于 2024-02-10 22:28:59">2024-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/45929.html" title="建立商城简单后台的过程"><img src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建立商城简单后台的过程"/></a><div class="content"><a class="title" href="/p/45929.html" title="建立商城简单后台的过程">建立商城简单后台的过程</a><time datetime="2024-02-08T10:26:45.226Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/48116.html" title="批量更改文件名"><img src="https://i.loli.net/2020/02/20/AbQg2jFUl1wChdn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="批量更改文件名"/></a><div class="content"><a class="title" href="/p/48116.html" title="批量更改文件名">批量更改文件名</a><time datetime="2024-02-08T10:26:45.226Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/f5c79a82.html" title="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记"><img src="https://i.loli.net/2020/02/20/CHe93nmhzAWK2Ig.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记"/></a><div class="content"><a class="title" href="/p/f5c79a82.html" title="【送 Girl Friend 的小工具】小程序 + 公众号开发笔记">【送 Girl Friend 的小工具】小程序 + 公众号开发笔记</a><time datetime="2024-02-08T10:26:45.224Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/p/27114.html" title="【项目】手持弹幕"><img src="https://i.loli.net/2020/02/20/bjerd89EkLzwiRc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】手持弹幕"/></a><div class="content"><a class="title" href="/p/27114.html" title="【项目】手持弹幕">【项目】手持弹幕</a><time datetime="2024-02-08T10:26:45.224Z" title="发表于 2024-02-08 18:26:45">2024-02-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2020/02/20/VeAos6HxRJPg3Qw.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lovely Ruby</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"><span>备案号：黑ICP备2022000599号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'YA3OUHq0zOUVCQ7gOb6Grskp-gzGzoHsz',
+      appKey: 'Aw8hEfP0teTOD7rji7Ye4gAO',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="/js/cursor-effects.js"></script><script src="/js/fish.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
